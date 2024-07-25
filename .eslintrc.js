@@ -14,6 +14,7 @@ module.exports = {
     {
       files: [
         '**/pages/**/*.{js,ts,vue}',
+        '**/server/**/*.{js,ts,vue}',
         '**/layouts/**/*.{js,ts,vue}',
         '**/app.{js,ts,vue}',
         '**/error.{js,ts,vue}'

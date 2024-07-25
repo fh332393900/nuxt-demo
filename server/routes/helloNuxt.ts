@@ -1,1 +1,1 @@
-export default defineEventHandler(() => "Hello Nuxt");
+export default defineEventHandler(() => 'Hello Nuxt')
