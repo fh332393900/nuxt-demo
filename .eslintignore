@@ -4,4 +4,5 @@
 /config
 /static
 /public
+/styles
 package.json

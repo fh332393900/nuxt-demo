@@ -1,9 +1,3 @@
-<template>
-  <div>
-    {{ count }}
-  </div>
-</template>
-
 <script lang="ts" setup>
 
 const count = ref<number>(0)
@@ -20,3 +14,9 @@ const getHello = async () => {
 getHello()
 
 </script>
+
+<template>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+</template>
