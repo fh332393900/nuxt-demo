@@ -11,7 +11,9 @@ export default defineNuxtConfig({
   css: [
     '~/styles/main.css'
   ],
-
+  colorMode: {
+    preference: 'light'
+  },
   i18n: {
     locales: currentLocales,
     langDir: 'locales',

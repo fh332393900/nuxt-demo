@@ -9,7 +9,12 @@ function changeLanguage (item: any) {
 
 <template>
   <UDropdown :items="[locales]" :ui="{ item: { disabled: 'cursor-text select-text' } }" :popper="{ placement: 'bottom-start' }">
-    <UIcon name="i-heroicons:language-16-solid" class="w-6 h-6" />
+    <UButton
+      icon="i-heroicons:language-16-solid"
+      color="gray"
+      variant="ghost"
+      aria-label="Theme"
+    />
     <template #item="{ item }">
       <div
         class="truncate text-left w-full"

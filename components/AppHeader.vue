@@ -14,7 +14,8 @@ const buildInfo = {
     </h1>
     <div class="btn">
       <Language class="mr-2" />
-      <Avatar />
+      <DarkMode />
+      <Avatar class="ml-2" />
     </div>
   </header>
 </template>
