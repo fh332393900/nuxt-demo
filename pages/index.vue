@@ -1,5 +1,98 @@
 <template>
-  <div>
-    <h1>{{ $t('welcome') }}</h1>
-  </div>
+  <AppHeader />
+  <main>
+    11
+  </main>
+  <AppFooter />
 </template>
+
+<style scoped>
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 16px;
+  background-color: var(--color-box);
+  padding: 40px 6rem;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px var(--un-shadow-color, rgba(0,0,0,0.25));
+}
+.emoji-canvas {
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgba(163, 163, 163, 0.2);
+  border-radius: 1rem;
+}
+canvas {
+  width: 160px;
+  height: 160px;
+}
+.tabs {
+  width: 100%;
+  padding: 20px 4rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(163, 163, 163, 0.2);
+}
+@media (max-width: 1260px) {
+  .tabs {
+    padding: 20px 2rem;
+  }
+  main {
+    padding: 40px 3rem;
+  }
+}
+@media (max-width: 800px) {
+  .tabs {
+    padding: 20px;
+  }
+  main {
+    padding: 40px 20px;
+  }
+}
+.tabs-item {
+  margin-right: 15px;
+  margin-bottom: 12px;
+}
+.option {
+  min-height: 300px;
+  margin-top: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.controls {
+  padding: 12px 0;
+  flex-wrap: wrap;
+}
+.refrsh {
+  cursor: pointer;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-box-small);
+  transition: background-color 0.2s;
+}
+.refrsh:hover {
+  background-color: rgba(221,214,254);
+}
+.btn {
+  display: flex;
+  align-items: center;
+  margin-left: 14px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 20px;
+  background-color: var(--color-box-small);
+  border-radius: 20px;
+  transition: background-color 0.2s;
+}
+.btn span {
+  font-weight: 600;
+}
+.btn:hover {
+  background-color: rgba(221,214,254);
+}
+.white-filter {
+  filter: invert(1);
+}
+</style>

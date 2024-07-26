@@ -18,6 +18,7 @@ module.exports = {
         '**/layouts/**/*.{js,ts,vue}',
         '**/config/**/*.{js,ts,vue}',
         '**/components/**/*.{js,ts,vue}',
+        '**/composables/**/*.{js,ts,vue}',
         '**/app.{js,ts,vue}',
         '**/error.{js,ts,vue}'
       ],
