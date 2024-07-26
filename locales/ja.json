@@ -1,0 +1,14 @@
+{
+  "action": {
+    "exportPNG": "PNG をエクスポート",
+    "exportSVG": "SVG をエクスポート",
+    "reload": "リロード",
+    "close": "閉じる"
+  },
+  "appInfo": {
+    "built_at": "ビルド {0}",
+    "views": "ビュー ",
+    "app_ready": "アプリケーションの準備ができました",
+    "app_update_notice": "新しいコンテンツが利用可能です。更新するにはリロード ボタンをクリックしてください。"
+  }
+}

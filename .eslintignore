@@ -1,8 +1,8 @@
 /dist
 /node_modules
 /build
-/config
 /static
 /public
 /styles
+/locales
 package.json

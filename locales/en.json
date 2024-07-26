@@ -1,0 +1,14 @@
+{
+  "action": {
+    "exportPNG": "Export PNG",
+    "exportSVG": "Export SVG",
+    "reload": "Reload",
+    "close": "Close"
+  },
+  "appInfo": {
+    "built_at": "Built {0}",
+    "views": "Views: ",
+    "app_ready": "Application is ready",
+    "app_update_notice": "New content available, click the reload button to update."
+  }
+}

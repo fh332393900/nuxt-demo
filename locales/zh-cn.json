@@ -1,0 +1,14 @@
+{
+  "action": {
+    "exportPNG": "导出 PNG",
+    "exportSVG": "导出 SVG",
+    "reload": "重新加载",
+    "close": "关闭"
+  },
+  "appInfo": {
+    "built_at": "构建于 {0}",
+    "views": "浏览量：",
+    "app_ready": "应用已就绪",
+    "app_update_notice": "新内容可用，点击重新加载按钮以更新。"
+  }
+}

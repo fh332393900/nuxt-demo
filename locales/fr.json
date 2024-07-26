@@ -1,0 +1,14 @@
+{
+  "action": {
+    "exportPNG": "Exporter PNG",
+    "exportSVG": "Exporter SVG",
+    "reload": "Recharger",
+    "close": "fermeture"
+  },
+  "appInfo": {
+    "built_at": "Dernière compilation {0}",
+    "views": "Vues: ",
+    "app_ready": "La candidature est prête",
+    "app_update_notice": "Un nouveau contenu est disponible, cliquez sur le bouton de rechargement pour mettre à jour."
+  }
+}
