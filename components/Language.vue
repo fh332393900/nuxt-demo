@@ -1,10 +1,9 @@
 <script setup lang="ts">
-const { locales, locale } = useI18n()
-console.log(locales, 'locales')
+const { locales, locale, setLocaleCookie } = useI18n()
 
 function changeLanguage (item: any) {
   locale.value = item.code
-  console.log(locale.value, '=======')
+  setLocaleCookie(locale.value)
 }
 </script>
 

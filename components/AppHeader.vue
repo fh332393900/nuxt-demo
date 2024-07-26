@@ -13,7 +13,7 @@ const buildInfo = {
       <span class="env">{{ buildInfo.env.MODE }}</span>
     </h1>
     <div class="btn">
-      <Language />
+      <Language class="mr-2" />
       <Avatar />
     </div>
   </header>
