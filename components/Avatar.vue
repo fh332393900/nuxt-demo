@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { loggedIn } = useUserSession()
 const items = [
   [{
     label: 'ben@example.com',
@@ -15,7 +16,15 @@ const items = [
 </script>
 
 <template>
-  <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' } }" :popper="{ placement: 'bottom-start' }">
+  <UButton
+    v-if="!loggedIn"
+    to="/api/auth/github"
+    icon="i-simple-icons-github"
+    label="Login with GitHub"
+    color="black"
+    external
+  />
+  <UDropdown v-else :items="items" :ui="{ item: { disabled: 'cursor-text select-text' } }" :popper="{ placement: 'bottom-start' }">
     <UAvatar src="https://avatars.githubusercontent.com/u/739984?v=4" />
 
     <template #account="{ item }">

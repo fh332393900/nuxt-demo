@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/i18n',
     '@nuxt/ui',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    'nuxt-auth-utils'
   ],
 
   css: [
@@ -16,7 +17,13 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     kvApi: process.env.KV_REST_API_URL,
-    kvToken: process.env.KV_REST_API_TOKEN
+    kvToken: process.env.KV_REST_API_TOKEN,
+    oauth: {
+      github: {
+        clientId: process.env.NUXT_GITHUB_CLIENT_ID,
+        clientSecret: process.env.NUXT_GITHUB_CLIENT_SECRET
+      }
+    }
   },
   i18n: {
     locales: currentLocales,

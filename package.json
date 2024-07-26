@@ -33,6 +33,7 @@
     "*": "eslint --fix"
   },
   "dependencies": {
-    "@vercel/kv": "^1.0.1"
+    "@vercel/kv": "^1.0.1",
+    "nuxt-auth-utils": "^0.1.0"
   }
 }
