@@ -9,6 +9,7 @@
   },
   "appInfo": {
     "built_at": "ビルド {0}",
+    "login_with": "でログイン",
     "signed_in_as": "としてサインイン",
     "views": "ビュー ",
     "app_ready": "アプリケーションの準備ができました",

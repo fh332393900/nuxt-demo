@@ -28,10 +28,11 @@ const items = [
         <p>
           {{ $t('appInfo.signed_in_as') }}
         </p>
-        <p class="truncate font-medium text-gray-900 dark:text-white" /><div>{{ (user as any).name }}</div>
-        <div class="text-xs">
+        <p class="truncate font-medium text-gray-900 dark:text-white">
+          {{ (user as any).name }}
+        </p>
+        <p class="truncate font-medium text-gray-900 dark:text-white text-xs">
           {{ (user as any).email }}
-        </div>
         </p>
       </div>
     </template>

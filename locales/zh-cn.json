@@ -9,6 +9,7 @@
   },
   "appInfo": {
     "built_at": "构建于 {0}",
+    "login_with": "使用以下方式登录",
     "signed_in_as": "登录为",
     "views": "浏览量：",
     "app_ready": "应用已就绪",

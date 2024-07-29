@@ -9,6 +9,7 @@
   },
   "appInfo": {
     "built_at": "빌트 {0}",
+    "login_with": "로그인 하세요",
     "signed_in_as": "로 로그인됨",
     "views": "견해：",
     "app_ready": "신청이 준비되었습니다",

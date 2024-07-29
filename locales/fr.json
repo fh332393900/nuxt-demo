@@ -9,6 +9,7 @@
   },
   "appInfo": {
     "built_at": "Dernière compilation {0}",
+    "login_with": "Connectez-vous avec",
     "signed_in_as": "Connecté en tant que",
     "views": "Vues: ",
     "app_ready": "La candidature est prête",

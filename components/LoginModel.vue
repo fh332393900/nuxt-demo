@@ -11,7 +11,7 @@ const isOpen = ref(false)
         <template #header>
           <div class="flex items-center justify-between">
             <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
-              Log in with
+              {{ $t('appInfo.login_with') }}
             </h3>
             <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="isOpen = false" />
           </div>
@@ -20,7 +20,7 @@ const isOpen = ref(false)
           <UButton
             to="/api/auth/github"
             icon="i-simple-icons-github"
-            label="Login with Github"
+            label="Github"
             color="black"
             size="lg"
             external
@@ -29,7 +29,7 @@ const isOpen = ref(false)
           <UButton
             to="/api/auth/google"
             icon="i-simple-icons-google"
-            label="Login with Google"
+            label="Google"
             color="gray"
             size="lg"
             external
