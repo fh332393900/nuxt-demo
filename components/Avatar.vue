@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { loggedIn, clear, user } = useUserSession()
+console.log(user.value, 'user')
 const items = [
   [{
     slot: 'account',
