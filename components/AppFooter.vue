@@ -3,8 +3,6 @@ const shortDate = ref('')
 const date = ref('')
 const views = ref(0)
 
-console.log(process.env, 'env')
-
 const getHello = async () => {
   const res: number = await $fetch('/api/views', {
     method: 'GET'

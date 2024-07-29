@@ -20,9 +20,9 @@ const items = [
 <template>
   <UButton
     v-if="!loggedIn"
-    to="/api/auth/github"
-    icon="i-simple-icons-github"
-    label="Login with GitHub"
+    to="/api/auth/google"
+    icon="i-simple-icons-google"
+    label="Login with Google"
     color="black"
     external
   />
