@@ -3,10 +3,13 @@
     "exportPNG": "Export PNG",
     "exportSVG": "Export SVG",
     "reload": "Reload",
-    "close": "Close"
+    "close": "Close",
+    "settings": "Settings",
+    "sign_out": "Sign out"
   },
   "appInfo": {
     "built_at": "Built {0}",
+    "signed_in_as": "Signed in as",
     "views": "Views: ",
     "app_ready": "Application is ready",
     "app_update_notice": "New content available, click the reload button to update."

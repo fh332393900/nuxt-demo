@@ -3,10 +3,13 @@
     "exportPNG": "PNG をエクスポート",
     "exportSVG": "SVG をエクスポート",
     "reload": "リロード",
-    "close": "閉じる"
+    "close": "閉じる",
+    "settings": "設定",
+    "sign_out": "サインアウト"
   },
   "appInfo": {
     "built_at": "ビルド {0}",
+    "signed_in_as": "としてサインイン",
     "views": "ビュー ",
     "app_ready": "アプリケーションの準備ができました",
     "app_update_notice": "新しいコンテンツが利用可能です。更新するにはリロード ボタンをクリックしてください。"

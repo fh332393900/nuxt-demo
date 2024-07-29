@@ -3,10 +3,13 @@
     "exportPNG": "Exporter PNG",
     "exportSVG": "Exporter SVG",
     "reload": "Recharger",
-    "close": "fermeture"
+    "close": "fermeture",
+    "settings": "Paramètres",
+    "sign_out": "se déconnecter"
   },
   "appInfo": {
     "built_at": "Dernière compilation {0}",
+    "signed_in_as": "Connecté en tant que",
     "views": "Vues: ",
     "app_ready": "La candidature est prête",
     "app_update_notice": "Un nouveau contenu est disponible, cliquez sur le bouton de rechargement pour mettre à jour."
