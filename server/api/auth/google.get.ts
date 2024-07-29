@@ -1,7 +1,10 @@
 export default oauth.googleEventHandler({
   async onSuccess (event, { user }) {
     console.log(user, '----user')
-    await setUserSession(event, { user })
+    await setUserSession(event, {
+      ...user,
+      avatrt: user.picture
+    })
     return sendRedirect(event, '/')
   },
   // Optional, will return a json error and 401 status code by default

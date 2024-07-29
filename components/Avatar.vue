@@ -28,7 +28,7 @@ const items = [
     external
   />
   <UDropdown v-else :items="items" :ui="{ item: { disabled: 'cursor-text select-text' } }" :popper="{ placement: 'bottom-start' }">
-    <UAvatar :src="`https://github.com/${(user as any).login}.png`" />
+    <UAvatar :src="(user as any).avatar" />
 
     <template #account>
       <div class="text-left">
@@ -36,7 +36,7 @@ const items = [
           {{ $t('appInfo.signed_in_as') }}
         </p>
         <p class="truncate font-medium text-gray-900 dark:text-white">
-          {{ (user as any).login }}
+          {{ (user as any).name }}
         </p>
       </div>
     </template>

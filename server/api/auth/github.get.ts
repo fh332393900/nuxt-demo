@@ -3,7 +3,11 @@ export default oauth.githubEventHandler({
     emailRequired: true
   },
   async onSuccess (event, { user }) {
-    await setUserSession(event, { user })
+    await setUserSession(event, {
+      ...user,
+      avarat: user.avatar_url,
+      name: user.login
+    })
     return sendRedirect(event, '/')
   },
   // Optional, will return a json error and 401 status code by default
