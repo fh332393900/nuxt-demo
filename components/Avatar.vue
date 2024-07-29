@@ -28,7 +28,7 @@ const items = [
     external
   />
   <UDropdown v-else :items="items" :ui="{ item: { disabled: 'cursor-text select-text' } }" :popper="{ placement: 'bottom-start' }">
-    <UAvatar :src="(user as any).avatar" />
+    <UAvatar :src="(user as any).picture" />
 
     <template #account>
       <div class="text-left">
