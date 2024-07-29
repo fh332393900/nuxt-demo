@@ -3,6 +3,8 @@ export default oauth.githubEventHandler({
     emailRequired: true
   },
   async onSuccess (event, { user }) {
+    user.name = user.login
+    user.avatar = user.avatar_url
     await setUserSession(event, { user })
     return sendRedirect(event, '/')
   },

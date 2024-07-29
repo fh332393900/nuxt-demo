@@ -1,6 +1,7 @@
 export default oauth.googleEventHandler({
   async onSuccess (event, { user }) {
     console.log(user, '----user')
+    user.avatar = user.picture
     await setUserSession(event, { user })
     return sendRedirect(event, '/')
   },

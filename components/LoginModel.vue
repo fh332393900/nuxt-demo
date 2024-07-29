@@ -1,0 +1,43 @@
+<script setup lang="ts">
+const isOpen = ref(false)
+</script>
+
+<template>
+  <div>
+    <UButton label="Log in" color="black" @click="isOpen = true" />
+
+    <UModal v-model="isOpen">
+      <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+        <template #header>
+          <div class="flex items-center justify-between">
+            <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
+              Log in with
+            </h3>
+            <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="isOpen = false" />
+          </div>
+        </template>
+        <div class="flex justify-center flex-col">
+          <UButton
+            to="/api/auth/github"
+            icon="i-simple-icons-github"
+            label="Login with Github"
+            color="black"
+            size="lg"
+            external
+            class="mb-4 text-center flex justify-center"
+          />
+          <UButton
+            to="/api/auth/google"
+            icon="i-simple-icons-google"
+            label="Login with Google"
+            color="gray"
+            size="lg"
+            external
+            class="mb-4 text-center flex justify-center"
+          />
+        </div>
+        <Placeholder class="h-32" />
+      </UCard>
+    </UModal>
+  </div>
+</template>

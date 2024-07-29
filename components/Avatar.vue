@@ -19,24 +19,19 @@ const items = [
 </script>
 
 <template>
-  <UButton
-    v-if="!loggedIn"
-    to="/api/auth/google"
-    icon="i-simple-icons-google"
-    label="Login with Google"
-    color="black"
-    external
-  />
+  <LoginModel v-if="!loggedIn" />
   <UDropdown v-else :items="items" :ui="{ item: { disabled: 'cursor-text select-text' } }" :popper="{ placement: 'bottom-start' }">
-    <UAvatar :src="(user as any).picture" />
+    <UAvatar :src="(user as any).avatar" />
 
     <template #account>
       <div class="text-left">
         <p>
           {{ $t('appInfo.signed_in_as') }}
         </p>
-        <p class="truncate font-medium text-gray-900 dark:text-white">
-          {{ (user as any).name }}
+        <p class="truncate font-medium text-gray-900 dark:text-white" /><div>{{ (user as any).name }}</div>
+        <div class="text-xs">
+          {{ (user as any).email }}
+        </div>
         </p>
       </div>
     </template>
