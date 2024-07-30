@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { currentLocales } from './config/i18n'
+import { currentLocales, currentLocaleCodes } from './config/i18n'
 
 export default defineNuxtConfig({
   modules: [
@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/tailwindcss',
     'nuxt-auth-utils',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    'dayjs-nuxt'
   ],
 
   css: [
@@ -40,10 +41,13 @@ export default defineNuxtConfig({
     registerType: 'prompt',
     client: {
       installPrompt: true,
-      // you don't need to include this: only for testing purposes
-      // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
-      periodicSyncForUpdates: 20
+      periodicSyncForUpdates: 20 // 定时更新 3600-一小时
     }
+  },
+  dayjs: {
+    locales: currentLocaleCodes,
+    plugins: ['relativeTime', 'utc', 'timezone', 'localizedFormat'],
+    defaultLocale: 'en'
   },
   i18n: {
     locales: currentLocales,

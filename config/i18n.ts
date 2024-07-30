@@ -27,3 +27,4 @@ const locales = [
 ]
 
 export const currentLocales = locales
+export const currentLocaleCodes = locales.map(l => l.code)
