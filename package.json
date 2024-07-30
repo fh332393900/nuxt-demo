@@ -34,6 +34,8 @@
   },
   "dependencies": {
     "@vercel/kv": "^1.0.1",
+    "@vite-pwa/nuxt": "^0.9.1",
+    "dayjs": "^1.11.12",
     "nuxt-auth-utils": "^0.1.0"
   }
 }

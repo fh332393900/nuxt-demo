@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/ui',
     '@nuxtjs/tailwindcss',
-    'nuxt-auth-utils'
+    'nuxt-auth-utils',
+    '@vite-pwa/nuxt'
   ],
 
   css: [
@@ -16,6 +17,7 @@ export default defineNuxtConfig({
     preference: 'light'
   },
   appConfig: {
+    buildDate: new Date().toISOString()
     // ui: {
     //   primary: 'green'
     // }
@@ -32,6 +34,15 @@ export default defineNuxtConfig({
         clientId: process.env.NUXT_OAUTH_GOOGLE_CLIENT_ID,
         clientSecret: process.env.NUXT_OAUTH_GOOGLE_CLIENT_SECRET
       }
+    }
+  },
+  pwa: {
+    registerType: 'prompt',
+    client: {
+      installPrompt: true,
+      // you don't need to include this: only for testing purposes
+      // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
+      periodicSyncForUpdates: 20
     }
   },
   i18n: {

@@ -18,5 +18,6 @@ getHello()
 <template>
   <NuxtLayout>
     <NuxtPage />
+    <AppPwaNotice />
   </NuxtLayout>
 </template>

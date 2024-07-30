@@ -1,16 +1,16 @@
 <script lang="ts" setup name="AppFooter">
-const shortDate = ref('')
-const date = ref('')
+const { buildDate } = useAppConfig()
+const buildTimeDate = new Date(buildDate)
 const views = ref(0)
-
-const getHello = async () => {
+console.log(buildTimeDate, 'buildTimeDate')
+const getViews = async () => {
   const res: number = await $fetch('/api/views', {
     method: 'GET'
   })
   views.value = res
 }
 
-getHello()
+getViews()
 </script>
 
 <template>
@@ -18,7 +18,7 @@ getHello()
     <div class="app-info text-primary-500 dark:text-primary-400">
       <span>{{ 'dev' }}</span>
       &middot;
-      <span :title="date">{{ $t("appInfo.built_at", [shortDate]) }}</span>
+      <span :title="String(buildTimeDate)">{{ $t("appInfo.built_at", [buildTimeDate]) }}</span>
       &middot;
       <NuxtLink class="version hover:underline" :href="`https://github.com/fh332393900/emoji-maker-vue/releases`">
         v{{ '0.1.14' }}
