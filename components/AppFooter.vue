@@ -19,7 +19,7 @@ getViews()
 </script>
 
 <template>
-  <footer>
+  <footer class="pb-5">
     <div class="app-info text-primary-500 dark:text-primary-400">
       <span>{{ 'dev' }}</span>
       &middot;
