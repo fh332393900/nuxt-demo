@@ -79,7 +79,7 @@ export default defineNuxtConfig({
   dayjs: {
     locales: currentLocaleCodes,
     plugins: ['relativeTime', 'utc', 'timezone', 'localizedFormat'],
-    defaultLocale: 'en'
+    defaultLocale: 'fr'
   },
   i18n: {
     locales: currentLocales,

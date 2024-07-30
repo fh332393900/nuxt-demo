@@ -4,12 +4,10 @@ const dayjs = useDayjs()
 const { locale } = useI18n()
 
 watch(locale, () => {
-  dayjs.locale(locale as any)
+  dayjs.locale(locale.value)
 })
-
 const buildTimeDate = new Date(buildDate)
 const views = ref(0)
-console.log(buildTimeDate, 'buildTimeDate')
 const getViews = async () => {
   const res: number = await $fetch('/api/views', {
     method: 'GET'

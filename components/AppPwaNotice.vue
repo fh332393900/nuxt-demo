@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { $pwa } = useNuxtApp()
 
+// eslint-disable-next-line no-console
 console.log($pwa)
 const actions = [{
   variant: 'solid',
