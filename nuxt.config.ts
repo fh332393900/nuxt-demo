@@ -15,6 +15,11 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'light'
   },
+  appConfig: {
+    // ui: {
+    //   primary: 'green'
+    // }
+  },
   runtimeConfig: {
     kvApi: process.env.KV_REST_API_URL,
     kvToken: process.env.KV_REST_API_TOKEN,

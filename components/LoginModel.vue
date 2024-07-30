@@ -4,7 +4,7 @@ const isOpen = ref(false)
 
 <template>
   <div>
-    <UButton label="Log in" color="black" @click="isOpen = true" />
+    <UButton label="Log in" @click="isOpen = true" />
 
     <UModal v-model="isOpen">
       <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
@@ -21,14 +21,13 @@ const isOpen = ref(false)
             to="/api/auth/github"
             icon="i-simple-icons-github"
             label="Github"
-            color="black"
             size="lg"
             external
             class="mb-4 text-center flex justify-center"
           />
           <UButton
             to="/api/auth/google"
-            icon="i-simple-icons-google"
+            icon="i-logos:google-icon"
             label="Google"
             color="gray"
             size="lg"

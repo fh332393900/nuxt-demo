@@ -15,26 +15,26 @@ getHello()
 
 <template>
   <footer>
-    <div class="app-info">
+    <div class="app-info text-primary-500 dark:text-primary-400">
       <span>{{ 'dev' }}</span>
       &middot;
       <span :title="date">{{ $t("appInfo.built_at", [shortDate]) }}</span>
       &middot;
-      <NuxtLink class="version" :href="`https://github.com/fh332393900/emoji-maker-vue/releases`">
+      <NuxtLink class="version hover:underline" :href="`https://github.com/fh332393900/emoji-maker-vue/releases`">
         v{{ '0.1.14' }}
       </NuxtLink>
     </div>
-    <div class="author-info flex justify-center align-center">
+    <div class="author-info flex justify-center align-center text-gray-500 dark:text-gray-400">
       <div class="name">
         Copyright © 2022 - 2024
-        <NuxtLink href="https://stevenfeng.cn" target="_blank">
+        <NuxtLink href="https://stevenfeng.cn" class="hover:underline" target="_blank">
           Steven Feng
         </NuxtLink>
       </div>
       <div style="margin: 0 12px;">
         |
       </div>
-      <NuxtLink href="https://github.com/fh332393900/emoji-maker-vue" target="_blank">
+      <NuxtLink href="https://github.com/fh332393900/emoji-maker-vue" class="hover:underline" target="_blank">
         Github
       </NuxtLink>
       <div style="margin: 0 12px;">

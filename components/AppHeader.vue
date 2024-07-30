@@ -8,11 +8,13 @@ const buildInfo = {
 
 <template>
   <header>
-    <h1>
-      Emoji Maker
+    <h1 class="flex items-center">
+      <UIcon name="i-solar:emoji-funny-square-broken" class="mt-1 text-primary-500 dark:text-primary-400 w-5 h-5" />
+      <span class="ml-2 text-primary text-base font-semibold leading-6">Emoji Maker</span>
       <span class="env">{{ buildInfo.env.MODE }}</span>
     </h1>
     <div class="btn">
+      <ColorPicker />
       <Language class="mr-2" />
       <DarkMode />
       <Avatar class="ml-2" />
@@ -26,11 +28,6 @@ header {
   justify-content: space-between;
   align-items: center;
   z-index: 1;
-}
-
-h1 {
-  font-weight: 800;
-  font-size: 18px;
 }
 
 .btn {
