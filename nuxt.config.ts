@@ -1,6 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { currentLocales, currentLocaleCodes } from './config/i18n'
 
+const sw = process.env.SW === 'true'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/i18n',
@@ -38,10 +40,40 @@ export default defineNuxtConfig({
     }
   },
   pwa: {
+    strategies: sw ? 'injectManifest' : 'generateSW',
+    srcDir: sw ? 'service-worker' : undefined,
+    filename: sw ? 'sw.ts' : undefined,
     registerType: 'prompt',
+    manifest: {
+      name: 'Emoji Maker',
+      short_name: 'EmojiMaker',
+      theme_color: '#ffffff',
+      icons: [
+        {
+          src: 'pwa-logo.png',
+          sizes: '192x192',
+          type: 'image/png'
+        }
+      ]
+    },
+    workbox: {
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}']
+    },
+    injectManifest: {
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}']
+    },
     client: {
       installPrompt: true,
-      periodicSyncForUpdates: 20 // 定时更新 3600-一小时
+      // you don't need to include this: only for testing purposes
+      // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
+      periodicSyncForUpdates: 20
+    },
+    devOptions: {
+      enabled: true,
+      suppressWarnings: true,
+      navigateFallback: '/',
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module'
     }
   },
   dayjs: {
@@ -64,6 +96,24 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       // (建议用于改进SEO) -仅检测站点根路径(/)上的浏览器区域设置。只有当使用策略而不是“no_prefix”时才有效。
       redirectOn: 'root'
+    }
+  },
+  app: {
+    keepalive: true,
+    head: {
+      viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
+      bodyAttrs: {
+        class: 'overflow-x-hidden'
+      },
+      link: [
+        { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/pwa-logo.svg' }
+      ],
+      meta: [
+        { property: 'og:title', content: 'Emoji Maker' },
+        { property: 'og:description', content: 'An emoji expression maker' },
+        { property: 'og:type', content: 'website' }
+      ]
     }
   },
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { $pwa } = useNuxtApp()
 
-console.log($pwa?.needRefresh)
+console.log($pwa)
 const actions = [{
   variant: 'solid',
   color: 'primary',
