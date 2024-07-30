@@ -1,19 +1,24 @@
 <script setup lang="ts">
 const { $pwa } = useNuxtApp()
+const { t } = useI18n()
 
 // eslint-disable-next-line no-console
 console.log($pwa)
-const actions = [{
-  variant: 'solid',
-  color: 'primary',
-  label: 'Reload',
-  click: $pwa?.updateServiceWorker
-}, {
-  variant: 'outline',
-  color: 'primary',
-  label: 'Close',
-  click: $pwa?.cancelPrompt
-}]
+const actions = ref([])
+watchEffect(() => {
+  actions.value = [{
+    variant: 'solid',
+    color: 'primary',
+    label: t('action.reload'),
+    click: $pwa?.updateServiceWorker
+  }, {
+    variant: 'outline',
+    color: 'primary',
+    label: t('action.close'),
+    click: $pwa?.cancelPrompt
+  }]
+})
+
 </script>
 
 <template>
@@ -21,10 +26,11 @@ const actions = [{
     <UNotification
       v-if="$pwa?.needRefresh"
       :id="9"
+      icon="i-heroicons-check-circle"
       class="pwa-toast"
       :actions="actions"
-      title="Notification"
-      description="New content available, click on reload button to update."
+      :title="$t('appInfo.notification')"
+      :description="$t('appInfo.app_update_notice')"
       :timeout="0"
     />
   </ClientOnly>
@@ -32,10 +38,10 @@ const actions = [{
 
 <style scoped>
 .pwa-toast {
-  max-width: 300px;
+  max-width: 320px;
   position: fixed;
-  right: 20px;
-  bottom: 30px;
+  right: 2rem;
+  bottom: 5rem;
   z-index: 1;
   text-align: left;
 }

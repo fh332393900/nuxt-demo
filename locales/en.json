@@ -12,6 +12,7 @@
     "signed_in_as": "Signed in as",
     "login_with": "Log in with {0}",
     "views": "Views: ",
+    "notification": "Notification",
     "app_ready": "Application is ready",
     "app_update_notice": "New content available, click the reload button to update."
   }

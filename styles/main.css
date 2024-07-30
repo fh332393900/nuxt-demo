@@ -12,9 +12,7 @@ canvas.animation {
   animation: slidein .3s alternate;
 }
 
-#__nuxt {
-  max-width: 1280px;
-  margin: 0 auto;
+/* #__nuxt {
   padding: 20px;
   font-weight: normal;
-}
+} */

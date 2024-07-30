@@ -66,7 +66,7 @@ export default defineNuxtConfig({
       installPrompt: true,
       // you don't need to include this: only for testing purposes
       // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
-      periodicSyncForUpdates: 20
+      periodicSyncForUpdates: 3600
     },
     devOptions: {
       enabled: true,
@@ -79,7 +79,7 @@ export default defineNuxtConfig({
   dayjs: {
     locales: currentLocaleCodes,
     plugins: ['relativeTime', 'utc', 'timezone', 'localizedFormat'],
-    defaultLocale: 'fr'
+    defaultLocale: 'en'
   },
   i18n: {
     locales: currentLocales,

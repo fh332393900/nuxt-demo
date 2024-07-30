@@ -1,18 +1,20 @@
 <template>
   <AppHeader />
-  <main>
-    112222
+  <main class="p-4">
+    <div class="content mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl bg-white dark:bg-gray-600">
+      <p class="text-primary">
+        Nuxt3
+      </p>
+    </div>
   </main>
   <AppFooter />
 </template>
 
 <style scoped>
-main {
+.content {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 16px;
-  background-color: var(--color-box);
   padding: 40px 6rem;
   border-radius: 20px;
   box-shadow: 0 25px 50px -12px var(--un-shadow-color, rgba(0,0,0,0.25));
@@ -32,22 +34,6 @@ canvas {
   padding: 20px 4rem;
   flex-wrap: wrap;
   border-bottom: 1px solid rgba(163, 163, 163, 0.2);
-}
-@media (max-width: 1260px) {
-  .tabs {
-    padding: 20px 2rem;
-  }
-  main {
-    padding: 40px 3rem;
-  }
-}
-@media (max-width: 800px) {
-  .tabs {
-    padding: 20px;
-  }
-  main {
-    padding: 40px 20px;
-  }
 }
 .tabs-item {
   margin-right: 15px;

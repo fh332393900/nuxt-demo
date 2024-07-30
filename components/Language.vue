@@ -18,7 +18,7 @@ function changeLanguage (item: any) {
     <template #item="{ item }">
       <div
         class="truncate text-left w-full"
-        :class="{ active: locale === item.code }"
+        :class="{ 'text-primary': locale === item.code }"
         @click="changeLanguage(item)"
       >
         {{ item.name }}
