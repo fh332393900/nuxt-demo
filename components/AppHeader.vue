@@ -1,9 +1,5 @@
 <script setup lang="ts">
-const buildInfo = {
-  env: {
-    MODE: 'development'
-  }
-}
+const { buildInfo } = useAppConfig()
 </script>
 
 <template>
@@ -12,7 +8,7 @@ const buildInfo = {
       <h1 class="flex items-center">
         <UIcon name="i-solar:emoji-funny-square-broken" class="text-primary-500 dark:text-primary-400 w-8 h-8" />
         <span class="ml-2 text-primary text-base font-semibold leading-6">Emoji Maker</span>
-        <span class="env ml-2 text-gray-500 dark:text-gray-50">{{ buildInfo.env.MODE }}</span>
+        <span class="env ml-2 text-gray-500 dark:text-gray-50">{{ buildInfo.env }}</span>
       </h1>
       <div class="flex items-center">
         <ColorPicker />

@@ -1,12 +1,14 @@
 <script lang="ts" setup name="AppFooter">
-const { buildDate } = useAppConfig()
+const { buildInfo } = useAppConfig()
 const dayjs = useDayjs()
 const { locale } = useI18n()
 
 watch(locale, () => {
   dayjs.locale(locale.value)
+}, {
+  immediate: true
 })
-const buildTimeDate = new Date(buildDate)
+const buildTimeDate = new Date(buildInfo.time)
 const views = ref(0)
 const getViews = async () => {
   const res: number = await $fetch('/api/views', {
@@ -21,12 +23,12 @@ getViews()
 <template>
   <footer class="pb-5">
     <div class="app-info text-primary-500 dark:text-primary-400">
-      <span>{{ 'dev' }}</span>
+      <span>{{ buildInfo.env }}</span>
       &middot;
       <span :title="dayjs(buildTimeDate).format('LLL')">{{ $t("appInfo.built_at", [$dayjs(buildTimeDate).fromNow()]) }}</span>
       &middot;
       <NuxtLink class="version hover:underline" :href="`https://github.com/fh332393900/emoji-maker-vue/releases`">
-        v{{ '0.1.14' }}
+        v{{ buildInfo.version }}
       </NuxtLink>
     </div>
     <div class="author-info flex justify-center align-center text-gray-500 dark:text-gray-400">

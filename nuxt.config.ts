@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { currentLocales, currentLocaleCodes } from './config/i18n'
+import { version } from './package.json'
 
 const sw = process.env.SW === 'true'
 
@@ -20,7 +21,11 @@ export default defineNuxtConfig({
     preference: 'light'
   },
   appConfig: {
-    buildDate: new Date().toISOString()
+    buildInfo: {
+      time: new Date().toISOString(),
+      env: process.env.NODE_ENV,
+      version
+    }
     // ui: {
     //   primary: 'green'
     // }
@@ -119,3 +124,18 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-07-26'
 })
+
+interface BuildInfo {
+  version: string
+  commit: string
+  shortCommit: string
+  time: string
+  branch: string
+  env: string
+}
+
+declare module '@nuxt/schema' {
+  interface AppConfig {
+    buildInfo: BuildInfo
+  }
+}
