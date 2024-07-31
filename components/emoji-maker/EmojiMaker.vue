@@ -9,7 +9,6 @@ const {
   selectedIndex,
   images,
   selectedImage,
-  loadImg,
   getRandom,
   exportImage,
   toSVGBlob,
@@ -23,8 +22,6 @@ const selectOption = (index: number) => {
   selectedIndex[tab.value] = index
   draw()
 }
-
-loadImg()
 </script>
 
 <template>

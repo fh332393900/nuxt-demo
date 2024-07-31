@@ -7,9 +7,8 @@ const canvasSize = 640
 
 export function useEmojiMaker (
   canvasRef: Ref<HTMLCanvasElement | null>,
-  data?: any[]
+  _data?: any[]
 ) {
-  console.log(data)
   const tab = ref<EmojiSlice>('head')
   const images = reactive<Record<EmojiSlice, string[]>>({
     head: [],
@@ -24,6 +23,10 @@ export function useEmojiMaker (
     eyebrows: 0,
     mouth: 0,
     detail: 0
+  })
+
+  onMounted(() => {
+    loadImg()
   })
 
   const selectedImage = () => {
@@ -79,6 +82,7 @@ export function useEmojiMaker (
       if (path === '') {
         resolve(null)
       }
+      console.log(Image, '---------')
       const img = new Image(10, 10)
       img.src = path
       img.onload = () => {
@@ -139,7 +143,6 @@ export function useEmojiMaker (
       pathToImage(mouthPath),
       pathToImage(detailPath)
     ]).then((images) => {
-      console.log(canvasRef.value)
       const ctx = (canvasRef.value as HTMLCanvasElement).getContext('2d')
       ctx?.clearRect(0, 0, (canvasRef.value as HTMLCanvasElement).width, (canvasRef.value as HTMLCanvasElement).height)
 
@@ -161,7 +164,6 @@ export function useEmojiMaker (
     tabs,
     images,
     selectedImage,
-    loadImg,
     getRandom,
     exportImage,
     toSVGBlob,

@@ -1,6 +1,8 @@
 <template>
   <div class="content mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl bg-white dark:bg-gray-600">
-    <EmojiMaker />
+    <ClientOnly>
+      <EmojiMaker />
+    </ClientOnly>
   </div>
 </template>
 
