@@ -6,4 +6,5 @@
 /styles
 /locales
 /assets
+/prisma
 package.json
