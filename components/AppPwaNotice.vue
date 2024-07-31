@@ -2,9 +2,7 @@
 const { $pwa } = useNuxtApp()
 const { t } = useI18n()
 
-// eslint-disable-next-line no-console
-console.log($pwa)
-const actions = ref([])
+const actions = ref()
 watchEffect(() => {
   actions.value = [{
     variant: 'solid',

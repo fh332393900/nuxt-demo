@@ -1,3 +1,8 @@
+<script setup lang="ts">
+defineProps<{ color: { value: string, hex: string }, selected: { value: string} }>()
+defineEmits(['select'])
+</script>
+
 <template>
   <UTooltip :text="color.value" class="capitalize" :open-delay="500">
     <UButton
@@ -18,8 +23,3 @@
     </UButton>
   </UTooltip>
 </template>
-
-<script setup lang="ts">
-defineProps<{ color: { value: string, hex: string }, selected: { value: string} }>()
-defineEmits(['select'])
-</script>

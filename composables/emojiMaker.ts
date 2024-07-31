@@ -82,14 +82,12 @@ export function useEmojiMaker (
       if (path === '') {
         resolve(null)
       }
-      console.log(Image, '---------')
       const img = new Image(10, 10)
       img.src = path
       img.onload = () => {
         resolve(img)
       }
       img.onerror = () => {
-        console.error(`Failed to load image: ${path}`)
         resolve(null)
       }
     })

@@ -25,9 +25,9 @@ getViews()
     <div class="app-info text-primary-500 dark:text-primary-400">
       <span>{{ buildInfo.env }}</span>
       &middot;
-      <span :title="dayjs(buildTimeDate).format('LLL')">{{ $t("appInfo.built_at", [$dayjs(buildTimeDate).fromNow()]) }}</span>
+      <span :title="dayjs(buildTimeDate).format('LLL')">{{ $t('appInfo.built_at', [$dayjs(buildTimeDate).fromNow()]) }}</span>
       &middot;
-      <NuxtLink class="version hover:underline" :href="`https://github.com/fh332393900/emoji-maker-vue/releases`">
+      <NuxtLink class="version hover:underline" :href="`https://github.com/fh332393900/nuxt-demo`">
         v{{ buildInfo.version }}
       </NuxtLink>
     </div>
@@ -41,7 +41,7 @@ getViews()
       <div style="margin: 0 12px;">
         |
       </div>
-      <NuxtLink href="https://github.com/fh332393900/emoji-maker-vue" class="hover:underline" target="_blank">
+      <NuxtLink href="https://github.com/fh332393900/nuxt-demo" class="hover:underline" target="_blank">
         Github
       </NuxtLink>
       <div style="margin: 0 12px;">
