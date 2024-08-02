@@ -19,12 +19,13 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/i18n": "^8.3.1",
     "@nuxtjs/tailwindcss": "^6.12.1",
+    "@sidebase/nuxt-auth": "^0.8.1",
     "@types/node": "^18",
     "dayjs-nuxt": "^2.1.9",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.27.0",
     "lint-staged": "^15.2.2",
-    "nuxt": "^3.4.2",
+    "nuxt": "^3.12.4",
     "prettier": "^2.8.7",
     "simple-git-hooks": "^2.11.1",
     "vue-i18n": "^9.13.1"
@@ -41,6 +42,7 @@
     "@vite-pwa/nuxt": "^0.9.1",
     "dayjs": "^1.11.12",
     "nuxt-auth-utils": "^0.1.0",
+    "next-auth": "4.21.1",
     "prisma": "^5.17.0"
   }
 }

@@ -12,3 +12,24 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id              String   @id @default(uuid()) // 使用 UUID 作为主键
+  username        String   @unique
+  email           String   @unique
+  password        String?
+  githubId        String?  @unique
+  googleId        String?  @unique
+  avatarUrl       String?
+  gender          String?
+  phoneNumber     String?  @unique
+  registrationMethod RegistrationMethod
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+enum RegistrationMethod {
+  EMAIL
+  GITHUB
+  GOOGLE
+}

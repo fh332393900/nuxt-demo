@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/tailwindcss',
     'nuxt-auth-utils',
+    '@sidebase/nuxt-auth',
     '@vite-pwa/nuxt',
     'dayjs-nuxt'
   ],
@@ -26,13 +27,21 @@ export default defineNuxtConfig({
       env: process.env.NODE_ENV,
       version
     }
-    // ui: {
-    //   primary: 'green'
-    // }
+  },
+  auth: {
+    isEnabled: true,
+    baseURL: process.env.AUTH_ORIGIN,
+    provider: {
+      type: 'authjs'
+    },
+    globalAppMiddleware: {
+      isEnabled: true
+    }
   },
   runtimeConfig: {
     kvApi: process.env.KV_REST_API_URL,
     kvToken: process.env.KV_REST_API_TOKEN,
+    databaseUrl: process.env.DATABASE_URL,
     oauth: {
       github: {
         clientId: process.env.NUXT_GITHUB_CLIENT_ID,
