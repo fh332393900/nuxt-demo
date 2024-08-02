@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/tailwindcss',
     'nuxt-auth-utils',
-    '@sidebase/nuxt-auth',
     '@vite-pwa/nuxt',
     'dayjs-nuxt'
   ],
@@ -26,16 +25,6 @@ export default defineNuxtConfig({
       time: new Date().toISOString(),
       env: process.env.NODE_ENV,
       version
-    }
-  },
-  auth: {
-    isEnabled: true,
-    baseURL: process.env.AUTH_ORIGIN,
-    provider: {
-      type: 'authjs'
-    },
-    globalAppMiddleware: {
-      isEnabled: true
     }
   },
   runtimeConfig: {

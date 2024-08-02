@@ -24,6 +24,9 @@ model User {
   gender          String?
   phoneNumber     String?  @unique
   registrationMethod RegistrationMethod
+  emailVerified           Boolean   @default(false)
+  emailVerificationToken  String?
+  emailVerificationExpires DateTime?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
