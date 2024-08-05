@@ -1,4 +1,4 @@
-import kv from './utils/kv'
+import kv from '@/server/utils/kv'
 
 export default defineEventHandler(async () => {
   await kv.set('test', 'mytest')

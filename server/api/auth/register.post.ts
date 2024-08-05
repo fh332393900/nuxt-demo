@@ -5,7 +5,7 @@ import prisma from '@/server/models/client'
 import { sendVerificationEmail } from '@/server/utils/sendEmail'
 
 export default defineEventHandler(async (event: any) => {
-  const { email, password } = await readBody(event)
+  const { email, username, password } = await readBody(event)
 
   const user = await prisma.user.findUnique({
     where: { email }
@@ -21,7 +21,7 @@ export default defineEventHandler(async (event: any) => {
   // 存储临时数据到 Vercel KV
   await kv.set(`registration:${emailVerificationToken}`, JSON.stringify({
     email,
-    username: email,
+    username,
     password: hashedPassword
   }))
   console.log('kv success1')

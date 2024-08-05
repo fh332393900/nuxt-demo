@@ -29,7 +29,7 @@ async function onSubmit (event: FormSubmitEvent<any>) {
 <template>
   <div class="mx-auto mt-6 max-w-96 flex justify-center flex-col">
     <div class="text-center font-bold text-lg py-4 text-primary">
-      Log in to Emoji Maker
+      Welcome back!
     </div>
     <UForm :validate="validate" :state="state" class="space-y-4" @submit="onSubmit">
       <UFormGroup label="Email" name="email">
@@ -45,9 +45,13 @@ async function onSubmit (event: FormSubmitEvent<any>) {
       </UButton>
     </UForm>
 
-    <div class="flex justify-center flex-col mt-4 pt-3">
-      <div class="text-gray-500 text-center p-2">
-        Other login options
+    <div class="flex justify-center flex-col mt-2 pt-3">
+      <div class="text-gray-500 text-center p-4 flex items-center">
+        <div class="border-t flex-1" />
+        <div class="mx-4">
+          or
+        </div>
+        <div class="border-t flex-1" />
       </div>
       <UButton
         to="/api/auth/github"
@@ -73,13 +77,29 @@ async function onSubmit (event: FormSubmitEvent<any>) {
       </UButton>
     </div>
     <div class="text-center mt-8">
+      <span class="text-gray-500 dark:text-gray-400">Don't have an account?</span>
       <ULink
         to="/signup"
         active-class="text-primary"
-        inactive-class="text-primary dark:text-gray-400 hover:underline dark:hover:text-gray-200"
+        inactive-class="text-primary dark:text-primary-400 hover:underline"
       >
-        Don't have an account? Sign Up
+        Sign Up
       </ULink>
     </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-5 text-center">
+      By continuing, you are indicating that you have read and acknowledge the
+      <ULink
+        active-class="text-primary"
+        inactive-class="text-primary dark:text-primary-400 hover:underline"
+      >
+        Terms of Service
+      </ULink> and
+      <ULink
+        active-class="text-primary"
+        inactive-class="text-primary dark:text-primary-400 hover:underline"
+      >
+        Privacy Policy
+      </ULink>.
+    </p>
   </div>
 </template>
