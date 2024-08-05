@@ -21,7 +21,7 @@ getViews()
 </script>
 
 <template>
-  <footer class="pb-5">
+  <footer class="p-4">
     <div class="app-info text-primary-500 dark:text-primary-400">
       <span>{{ buildInfo.env }}</span>
       &middot;
@@ -55,9 +55,6 @@ getViews()
 </template>
 
 <style scoped>
-footer {
-  margin-top: 24px;
-}
 .app-info {
   text-align: center;
 }

@@ -1,6 +1,6 @@
 <template>
   <AppHeader />
-  <main class="p-4">
+  <main class="p-4" style="min-height: calc(100vh - 140px);">
     <slot />
   </main>
   <AppFooter />

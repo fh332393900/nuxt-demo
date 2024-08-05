@@ -6,7 +6,7 @@ const isOpen = ref(false)
   <div>
     <UButton
       label="Log in"
-      @click="isOpen = true"
+      to="/login"
     />
 
     <UModal v-model="isOpen">
