@@ -14,7 +14,7 @@ datasource db {
 }
 
 model User {
-  id              String   @id @default(uuid()) // 使用 UUID 作为主键
+  id              String   @id @default(cuid()) // 使用 CUID 作为主键
   username        String   @unique
   email           String   @unique
   password        String?

@@ -8,8 +8,7 @@ export async function sendVerificationEmail (email: string, token: string) {
     auth: {
       type: 'OAuth2',
       user: 'fh332393900@gmail.com',
-      clientId:
-      process.env.NUXT_OAUTH_GOOGLE_CLIENT_ID,
+      clientId: process.env.NUXT_OAUTH_GOOGLE_CLIENT_ID,
       clientSecret: process.env.NUXT_OAUTH_GOOGLE_CLIENT_SECRET,
       refreshToken:
         '1//0443FWyR2xpT-CgYIARAAGAQSNwF-L9IrW8Ine0KHFGRaaLM0tZAkx-1zYqYcqWpfrS-1NX23Gm5_hQTtSeflPtULwJ5gwkERCWI',
