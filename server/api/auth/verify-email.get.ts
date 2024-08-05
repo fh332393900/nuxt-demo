@@ -15,26 +15,14 @@ export default defineEventHandler(async (event) => {
 
   const { email, username, password } = JSON.parse(tempData)
 
-  const user = await prisma.user.findFirst({
-    where: { emailVerificationToken: token }
-  })
-
-  if (!user) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Invalid verification token'
-    })
-  }
-
   // 创建用户
   await prisma.user.create({
     data: {
       email,
       username,
       password, // 记得对密码进行加密处理
-      emailVerified: true,
-      verificationToken: null,
-      verificationExpiry: null
+      registrationMethod: 'EMAIL',
+      verified: true
     }
   })
 
