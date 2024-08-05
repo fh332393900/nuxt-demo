@@ -1,10 +1,10 @@
 import * as bcrypt from 'bcrypt'
 import { v4 as uuidv4 } from 'uuid'
-import kv from '../utils/kv'
-import prisma from '../../models/client'
-import { sendVerificationEmail } from '../utils/sendEmail'
+import kv from '@/server/utils/kv'
+import prisma from '@/server/models/client'
+import { sendVerificationEmail } from '@/server/utils/sendEmail'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: any) => {
   const { email, password } = await readBody(event)
 
   const user = await prisma.user.findUnique({

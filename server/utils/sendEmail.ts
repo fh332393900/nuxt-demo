@@ -11,7 +11,7 @@ export async function sendVerificationEmail (email: string, token: string) {
     }
   })
 
-  const verificationLink = `http://localhost:3000/api/auth/verify-email?token=${token}`
+  const verificationLink = `http://localhost:3000/verify-email?token=${token}`
 
   const mailOptions = {
     from: '332393900@qq.com',

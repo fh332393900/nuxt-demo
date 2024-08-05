@@ -1,11 +1,11 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import prisma from '../../models/client'
 import type { LoginTypes } from './type'
+import prisma from '@/server/models/client'
 
 const secret = process.env.NUXT_SESSION_PASSWORD || ''
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: any) => {
   const { email, password }: LoginTypes = await readBody(event)
 
   const user = await prisma.user.findUnique({
