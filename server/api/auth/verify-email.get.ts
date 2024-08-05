@@ -5,7 +5,8 @@ export default defineEventHandler(async (event) => {
   const { token }: { token: string } = getQuery(event)
 
   // 获取临时数据
-  const tempData = await kv.get(`registration:${token}`) as string
+  const tempData = await kv.get(`registration:${token}`)
+  console.log(tempData)
   if (!tempData) {
     return {
       status: 'error',
@@ -13,7 +14,7 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  const { email, username, password } = JSON.parse(tempData)
+  const { email, username, password } = tempData
 
   // 创建用户
   await prisma.user.create({
@@ -25,6 +26,8 @@ export default defineEventHandler(async (event) => {
       verified: true
     }
   })
+
+  await kv.delete(`registration:${token}`)
 
   return {
     status: 'success',
