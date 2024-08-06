@@ -33,7 +33,8 @@
   "signup": {
     "username": "用户名",
     "back_login": "返回登录",
-    "success": "注册成功!",
+    "success": "成功！",
+    "error": "失败！",
     "signup_success_tips": "请查看您的电子邮件来验证您的帐户。"
   }
 }

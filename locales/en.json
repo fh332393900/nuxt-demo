@@ -34,6 +34,7 @@
     "username": "Username",
     "back_login": "Back to Login",
     "success": "Success!",
+    "error": "Error!",
     "signup_success_tips": "Sign up successful, please check your email to verify your account."
   }
 }

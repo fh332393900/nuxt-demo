@@ -1,12 +1,20 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
 
+const { t } = useI18n()
 const state = reactive({
   email: '',
   password: '',
   username: ''
 })
 const signupSuccess = ref(false)
+const btnLoading = ref(false)
+const signupResult = ref({
+  color: 'primary',
+  title: t('signup.success'),
+  message: t('signup.signup_success_tips'),
+  icon: 'i-material-symbols-light:check-circle-rounded'
+})
 
 const validate = (state: any): FormError[] => {
   const errors = []
@@ -17,12 +25,24 @@ const validate = (state: any): FormError[] => {
 }
 
 async function onSubmit (event: FormSubmitEvent<any>) {
-  const res = await $fetch('/api/auth/register', {
-    method: 'POST',
-    body: event.data
-  })
-  if (res.status === 'success') {
+  btnLoading.value = true
+  try {
+    const res = await $fetch('/api/auth/register', {
+      method: 'POST',
+      body: event.data
+    })
     signupSuccess.value = true
+    btnLoading.value = false
+    if (res.status !== 'success') {
+      signupResult.value = {
+        color: 'red',
+        title: t('signup.error'),
+        message: res.message,
+        icon: 'i-material-symbols:error-circle-rounded-sharp'
+      }
+    }
+  } catch (error) {
+    btnLoading.value = false
   }
 }
 </script>
@@ -46,14 +66,20 @@ async function onSubmit (event: FormSubmitEvent<any>) {
       </UFormGroup>
       <div v-if="signupSuccess">
         <UAlert
-          icon="i-material-symbols-light:check-circle-rounded"
-          color="primary"
+          :icon="signupResult.icon"
+          :color="signupResult.color"
           variant="outline"
-          :title="$t('signup.success')"
-          :description="$t('signup.signup_success_tips')"
+          :title="signupResult.title"
+          :description="signupResult.message"
         />
       </div>
-      <UButton block size="lg" icon="i-heroicons-envelope" type="submit">
+      <UButton
+        block
+        size="lg"
+        icon="i-heroicons-envelope"
+        type="submit"
+        :loading="btnLoading"
+      >
         {{ $t('login.sign_up') }}
       </UButton>
     </UForm>
