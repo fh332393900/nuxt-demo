@@ -1,11 +1,21 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
+import useUserAuth from '~/composables/userAuth'
 
+definePageMeta({
+  middleware: 'auth'
+})
+
+const loginError = ref({
+  title: '',
+  message: ''
+})
 const router = useRouter()
 const state = reactive({
   email: '',
   password: ''
 })
+const { user, login } = useUserAuth()
 
 const validate = (state: any): FormError[] => {
   const errors = []
@@ -17,12 +27,20 @@ const validate = (state: any): FormError[] => {
 async function onSubmit (event: FormSubmitEvent<any>) {
   // Do something with data
   console.log(event.data)
-  const res = await $fetch('/api/auth/login', {
-    method: 'POST',
-    body: event.data
-  })
-  console.log(res)
-  router.push('/')
+  const res = await login(event.data)
+  if (res.status === 'success') {
+    console.log(user.value, '-----------')
+    state.value = {
+      email: '',
+      password: ''
+    }
+    router.push('/')
+  } else {
+    loginError.value = {
+      title: 'Error',
+      message: res.message
+    }
+  }
 }
 </script>
 
@@ -39,6 +57,15 @@ async function onSubmit (event: FormSubmitEvent<any>) {
       <UFormGroup :label="$t('login.password')" name="password">
         <UInput v-model="state.password" :placeholder="$t('login.password')" type="password" />
       </UFormGroup>
+
+      <UAlert
+        v-if="loginError.title"
+        icon="i-material-symbols:error-circle-rounded-sharp"
+        color="red"
+        variant="outline"
+        :title="loginError.title"
+        :description="loginError.message"
+      />
 
       <UButton type="submit" size="lg" icon="i-heroicons-envelope" block>
         {{ $t('login.continue_with', [$t('login.email')]) }}

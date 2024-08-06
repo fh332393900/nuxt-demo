@@ -4,15 +4,25 @@ export default function useUserAuth () {
   const loggedIn = computed(() => {
     return cookie.value
   })
-  const user = {}
+  const user = useCookie('auth.user.local')
 
+  async function login (data: any) {
+    const res = await $fetch('/api/auth/login', {
+      method: 'POST',
+      body: data
+    })
+    user.value = res.user
+    return res
+  }
   function clear () {
     cookie.value = ''
+    user.value = ''
   }
 
   return {
     loggedIn,
     user,
+    login,
     clear
   }
 }

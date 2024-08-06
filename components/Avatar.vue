@@ -4,6 +4,7 @@ import useUserAuth from '~/composables/userAuth'
 // const { loggedIn, clear, user } = useUserSession()
 const { loggedIn, user, clear } = useUserAuth()
 console.log(loggedIn, '000000')
+console.log(user.value, 'vvvvvvvv')
 const items = [
   [{
     slot: 'account',
@@ -24,7 +25,7 @@ const items = [
 <template>
   <LoginModel v-if="!loggedIn" />
   <UDropdown v-else :items="items" :ui="{ item: { disabled: 'cursor-text select-text' } }" :popper="{ placement: 'bottom-start' }">
-    <UAvatar :src="(user as any).avatar" />
+    <UAvatar :src="(user as any)?.avatarUrl || ''" :alt="user?.username" />
 
     <template #account>
       <div class="text-left">

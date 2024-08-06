@@ -36,9 +36,15 @@ export default defineEventHandler(async (event: any) => {
   const userToken = jwt.sign({ id: user.id, email: user.email }, secret, { expiresIn: '1h' })
 
   setCookie(event, 'auth._token.local', userToken, {
-    httpOnly: true,
+    httpOnly: false,
     sameSite: true,
     maxAge: 3600
   })
+  setCookie(event, 'auth.user.local', JSON.stringify(user), {
+    httpOnly: false,
+    sameSite: true,
+    maxAge: 3600
+  })
+
   return sendRedirect(event, '/')
 })
