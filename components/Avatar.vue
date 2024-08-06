@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const { loggedIn, clear, user } = useUserSession()
+import useUserAuth from '~/composables/userAuth'
+
+// const { loggedIn, clear, user } = useUserSession()
+const { loggedIn, user, clear } = useUserAuth()
+console.log(loggedIn, '000000')
 const items = [
   [{
     slot: 'account',
@@ -28,7 +32,7 @@ const items = [
           {{ $t('appInfo.signed_in_as') }}
         </p>
         <p class="truncate font-medium text-gray-900 dark:text-white">
-          {{ (user as any).name }}
+          {{ (user as any).username }}
         </p>
         <p class="truncate font-medium text-gray-900 dark:text-white text-xs">
           {{ (user as any).email }}
