@@ -7,6 +7,7 @@ const secret = process.env.NUXT_SESSION_PASSWORD || ''
 
 export default defineEventHandler(async (event: any) => {
   const { email, password }: LoginTypes = await readBody(event)
+  const t = await useTranslation(event)
 
   const user = await prisma.user.findUnique({
     where: { email }
@@ -14,7 +15,7 @@ export default defineEventHandler(async (event: any) => {
   if (!user) {
     return {
       status: 'error',
-      message: 'Invalid email'
+      message: t('server.invalid_username_password')
     }
   }
 
@@ -24,7 +25,7 @@ export default defineEventHandler(async (event: any) => {
   if (!isPasswordValid) {
     return {
       status: 'error',
-      message: 'Invalid password'
+      message: t('server.invalid_username_password')
     }
   }
 

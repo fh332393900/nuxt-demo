@@ -99,6 +99,9 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       // (建议用于改进SEO) -仅检测站点根路径(/)上的浏览器区域设置。只有当使用策略而不是“no_prefix”时才有效。
       redirectOn: 'root'
+    },
+    experimental: {
+      localeDetector: './config/localeDetector.ts'
     }
   },
   app: {

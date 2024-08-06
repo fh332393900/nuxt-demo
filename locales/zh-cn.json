@@ -36,5 +36,8 @@
     "success": "成功！",
     "error": "失败！",
     "signup_success_tips": "请查看您的电子邮件来验证您的帐户。"
+  },
+  "server": {
+    "invalid_username_password": "用户名或密码错误，请检查并重试"
   }
 }

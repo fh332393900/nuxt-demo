@@ -36,5 +36,8 @@
     "success": "Success!",
     "error": "Error!",
     "signup_success_tips": "Sign up successful, please check your email to verify your account."
+  },
+  "server": {
+    "invalid_username_password": "Invalid username or password, please check and try again"
   }
 }

@@ -40,6 +40,13 @@ async function onSubmit (event: FormSubmitEvent<any>) {
         message: res.message,
         icon: 'i-material-symbols:error-circle-rounded-sharp'
       }
+    } else {
+      signupResult.value = {
+        color: 'primary',
+        title: t('signup.success'),
+        message: t('signup.signup_success_tips'),
+        icon: 'i-material-symbols-light:check-circle-rounded'
+      }
     }
   } catch (error) {
     btnLoading.value = false

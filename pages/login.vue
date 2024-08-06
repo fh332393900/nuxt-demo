@@ -10,6 +10,7 @@ const loginError = ref({
   title: '',
   message: ''
 })
+const { t } = useI18n()
 const router = useRouter()
 const state = reactive({
   email: '',
@@ -37,7 +38,7 @@ async function onSubmit (event: FormSubmitEvent<any>) {
     router.push('/')
   } else {
     loginError.value = {
-      title: 'Error',
+      title: t('signup.error'),
       message: res.message
     }
   }

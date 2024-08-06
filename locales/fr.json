@@ -35,5 +35,8 @@
     "back_login": "Retour connexion",
     "success": "Succès!",
     "signup_success_tips": "Inscription réussie, veuillez vérifier votre e-mail pour vérifier votre compte."
+  },
+  "server": {
+    "invalid_username_password": "Nom d'utilisateur ou mot de passe invalide, veuillez vérifier et réessayer"
   }
 }

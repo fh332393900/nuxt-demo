@@ -35,5 +35,8 @@
     "back_login": "로그인으로 돌아가기",
     "success": "성공!",
     "signup_success_tips": "가입이 성공하였습니다. 이메일을 확인하여 계정을 확인해 주세요."
+  },
+  "server": {
+    "invalid_username_password": "잘못된 사용자 이름 또는 비밀번호입니다. 확인하고 다시 시도하세요."
   }
 }
