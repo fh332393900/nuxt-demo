@@ -21,7 +21,7 @@ getViews()
 </script>
 
 <template>
-  <footer class="p-4">
+  <footer class="p-4 border-t border-gray-200 dark:border-gray-600">
     <div class="app-info text-primary-500 dark:text-primary-400">
       <span>{{ buildInfo.env }}</span>
       &middot;

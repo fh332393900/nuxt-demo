@@ -5,7 +5,8 @@
     "reload": "Reload",
     "close": "Close",
     "settings": "Settings",
-    "sign_out": "Sign out"
+    "sign_out": "Sign out",
+    "login": "Login"
   },
   "appInfo": {
     "built_at": "Built {0}",
@@ -15,5 +16,24 @@
     "notification": "Notification",
     "app_ready": "Application is ready",
     "app_update_notice": "New content available, click the reload button to update."
+  },
+  "login": {
+    "welcome_back": "Welcome back!",
+    "email": "Email",
+    "password": "Password",
+    "email_address": "Email Address",
+    "continue_with": "Continue with {0}",
+    "or": "or",
+    "no_account": "Don't have an account?",
+    "sign_up": "Sign Up",
+    "policy_tips": "By continuing, you are indicating that you have read and acknowledge the {0} and {1}.",
+    "service": "Terms of Service",
+    "policy": "Privacy Policy"
+  },
+  "signup": {
+    "username": "Username",
+    "back_login": "Back to Login",
+    "success": "Success!",
+    "signup_success_tips": "Sign up successful, please check your email to verify your account."
   }
 }

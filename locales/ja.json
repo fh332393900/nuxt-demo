@@ -5,7 +5,8 @@
     "reload": "リロード",
     "close": "閉じる",
     "settings": "設定",
-    "sign_out": "サインアウト"
+    "sign_out": "サインアウト",
+    "login": "ログイン"
   },
   "appInfo": {
     "built_at": "ビルド {0}",
@@ -15,5 +16,24 @@
     "notification": "通知",
     "app_ready": "アプリケーションの準備ができました",
     "app_update_notice": "新しいコンテンツが利用可能です。更新するにはリロード ボタンをクリックしてください。"
+  },
+  "login": {
+    "welcome_back": "おかえり！",
+    "email": "Eメール",
+    "password": "パスワード",
+    "email_address": "電子メールアドレス",
+    "continue_with": "を続行 {0}",
+    "or": "または",
+    "no_account": "まだアカウントをお持ちでない場合は、",
+    "sign_up": "登録する",
+    "policy_tips": "続行すると、{0}と{1} ポリシーに同意したものとみなされます",
+    "service": "利用規約",
+    "policy": "プライバシー"
+  },
+  "signup": {
+    "username": "ユーザー名",
+    "back_login": "ログインに戻る",
+    "success": "成功!",
+    "signup_success_tips": "サインアップは成功しました。メールをチェックしてアカウントを確認してください。"
   }
 }

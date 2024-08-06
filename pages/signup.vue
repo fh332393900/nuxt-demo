@@ -6,6 +6,7 @@ const state = reactive({
   password: '',
   username: ''
 })
+const signupSuccess = ref(false)
 
 const validate = (state: any): FormError[] => {
   const errors = []
@@ -16,36 +17,44 @@ const validate = (state: any): FormError[] => {
 }
 
 async function onSubmit (event: FormSubmitEvent<any>) {
-  // Do something with data
-  console.log(event.data)
   const res = await $fetch('/api/auth/register', {
     method: 'POST',
     body: event.data
   })
-  console.log(res)
+  if (res.status === 'success') {
+    signupSuccess.value = true
+  }
 }
 </script>
 
 <template>
-  <div class="mx-auto mt-6 max-w-96 flex justify-center flex-col">
-    <div class="text-center font-bold text-lg py-4 text-primary">
-      Sign up
+  <div class="mx-auto mt-3 max-w-96 flex justify-center flex-col">
+    <div class="text-center font-bold text-lg text-primary">
+      {{ $t('login.sign_up') }}
     </div>
     <UForm :validate="validate" :state="state" class="space-y-4" @submit="onSubmit">
-      <UFormGroup label="Email" name="email">
-        <UInput v-model="state.email" placeholder="Email Address" />
+      <UFormGroup :label="$t('login.email')" name="email">
+        <UInput v-model="state.email" :placeholder="$t('login.email_address')" />
       </UFormGroup>
 
-      <UFormGroup label="Username" name="username">
-        <UInput v-model="state.username" placeholder="Username" />
+      <UFormGroup :label="$t('signup.username')" name="username">
+        <UInput v-model="state.username" :placeholder="$t('signup.username')" />
       </UFormGroup>
 
-      <UFormGroup label="Password" name="password">
-        <UInput v-model="state.password" placeholder="Password" type="password" />
+      <UFormGroup :label="$t('login.password')" name="password">
+        <UInput v-model="state.password" :placeholder="$t('login.password')" type="password" />
       </UFormGroup>
-
+      <div v-if="signupSuccess">
+        <UAlert
+          icon="i-material-symbols-light:check-circle-rounded"
+          color="primary"
+          variant="outline"
+          :title="$t('signup.success')"
+          :description="$t('signup.signup_success_tips')"
+        />
+      </div>
       <UButton block size="lg" icon="i-heroicons-envelope" type="submit">
-        Sign Up
+        {{ $t('login.sign_up') }}
       </UButton>
     </UForm>
     <div class="text-center mt-4">
@@ -55,23 +64,24 @@ async function onSubmit (event: FormSubmitEvent<any>) {
         active-class="text-primary"
         inactive-class="text-primary dark:text-primary-400 hover:underline"
       >
-        Back to Login
+        {{ $t('signup.back_login') }}
       </ULink>
     </div>
     <p class="text-xs text-gray-500 dark:text-gray-400 mt-5 text-center">
-      By continuing, you are indicating that you have read and acknowledge the
-      <ULink
-        active-class="text-primary"
-        inactive-class="text-primary dark:text-primary-400 hover:underline"
-      >
-        Terms of Service
-      </ULink> and
-      <ULink
-        active-class="text-primary"
-        inactive-class="text-primary dark:text-primary-400 hover:underline"
-      >
-        Privacy Policy
-      </ULink>.
+      <i18n-t keypath="login.policy_tips">
+        <ULink
+          active-class="text-primary"
+          inactive-class="text-primary dark:text-primary-400 hover:underline"
+        >
+          {{ $t('login.service') }}
+        </ULink>
+        <ULink
+          active-class="text-primary"
+          inactive-class="text-primary dark:text-primary-400 hover:underline"
+        >
+          {{ $t('login.policy') }}
+        </ULink>
+      </i18n-t>
     </p>
   </div>
 </template>

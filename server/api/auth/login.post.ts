@@ -11,7 +11,6 @@ export default defineEventHandler(async (event: any) => {
   const user = await prisma.user.findUnique({
     where: { email }
   })
-  console.log(user, '9999999')
   if (!user) {
     return {
       status: 'error',
@@ -19,6 +18,7 @@ export default defineEventHandler(async (event: any) => {
     }
   }
 
+  // eslint-disable-next-line import/no-named-as-default-member
   const isPasswordValid = await bcrypt.compare(password, user.password as string)
 
   if (!isPasswordValid) {

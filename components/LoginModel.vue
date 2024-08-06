@@ -5,7 +5,7 @@ const isOpen = ref(false)
 <template>
   <div>
     <UButton
-      label="Log in"
+      :label="$t('action.login')"
       to="/login"
     />
 

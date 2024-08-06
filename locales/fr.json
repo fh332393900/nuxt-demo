@@ -5,7 +5,8 @@
     "reload": "Recharger",
     "close": "fermeture",
     "settings": "Paramètres",
-    "sign_out": "se déconnecter"
+    "sign_out": "se déconnecter",
+    "login": "Se connecter"
   },
   "appInfo": {
     "built_at": "Dernière compilation {0}",
@@ -15,5 +16,24 @@
     "notification": "Notification",
     "app_ready": "La candidature est prête",
     "app_update_notice": "Un nouveau contenu est disponible, cliquez sur le bouton de rechargement pour mettre à jour."
+  },
+  "login": {
+    "welcome_back": "Content de te revoir!",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "email_address": "Adresse e-mail",
+    "continue_with": "Continue avec {0}",
+    "or": "ou",
+    "no_account": "Vous n'avez pas de compte ?",
+    "sign_up": "S'inscrire",
+    "policy_tips": "En continuant, vous indiquez que vous avez lu et accepté les {0} et {1}.",
+    "service": "conditions d'utilisation",
+    "policy": "la politique de confidentialité"
+  },
+  "signup": {
+    "username": "Nom d'utilisateur",
+    "back_login": "Retour connexion",
+    "success": "Succès!",
+    "signup_success_tips": "Inscription réussie, veuillez vérifier votre e-mail pour vérifier votre compte."
   }
 }

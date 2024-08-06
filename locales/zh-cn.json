@@ -5,7 +5,8 @@
     "reload": "重新加载",
     "close": "关闭",
     "settings": "设置",
-    "sign_out": "退出登录"
+    "sign_out": "退出登录",
+    "login": "登录"
   },
   "appInfo": {
     "built_at": "构建于 {0}",
@@ -15,5 +16,24 @@
     "notification": "通知",
     "app_ready": "应用已就绪",
     "app_update_notice": "新内容可用，点击重新加载按钮以更新。"
+  },
+  "login": {
+    "welcome_back": "欢迎回来!",
+    "email": "邮箱",
+    "password": "密码",
+    "email_address": "邮箱地址",
+    "continue_with": "继续使用{0}",
+    "or": "或者",
+    "no_account": "还没有账户？",
+    "sign_up": "注册",
+    "policy_tips": "继续操作即表示您已阅读并同意{0}和{0}。",
+    "service": "服务条款",
+    "policy": "隐私政策"
+  },
+  "signup": {
+    "username": "用户名",
+    "back_login": "返回登录",
+    "success": "注册成功!",
+    "signup_success_tips": "请查看您的电子邮件来验证您的帐户。"
   }
 }

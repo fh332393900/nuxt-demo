@@ -24,9 +24,7 @@ export default defineEventHandler(async (event: any) => {
     username,
     password: hashedPassword
   }))
-  console.log('kv success1')
   await kv.expire(`registration:${emailVerificationToken}`, 3600)
-  console.log('kv success2')
   await sendVerificationEmail(email, emailVerificationToken)
 
   return {
