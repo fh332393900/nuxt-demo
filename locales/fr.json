@@ -34,9 +34,11 @@
     "username": "Nom d'utilisateur",
     "back_login": "Retour connexion",
     "success": "Succès!",
+    "error": "Erreur!",
     "signup_success_tips": "Inscription réussie, veuillez vérifier votre e-mail pour vérifier votre compte."
   },
   "server": {
-    "invalid_username_password": "Nom d'utilisateur ou mot de passe invalide, veuillez vérifier et réessayer"
+    "invalid_username_password": "Nom d'utilisateur ou mot de passe invalide, veuillez vérifier et réessayer",
+    "email_exists": "L'adresse e-mail existe déjà"
   }
 }

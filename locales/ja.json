@@ -34,9 +34,11 @@
     "username": "ユーザー名",
     "back_login": "ログインに戻る",
     "success": "成功!",
+    "error": "エラー!",
     "signup_success_tips": "サインアップは成功しました。メールをチェックしてアカウントを確認してください。"
   },
   "server": {
-    "invalid_username_password": "ユーザー名またはパスワードが無効です。確認してもう一度お試しください。"
+    "invalid_username_password": "ユーザー名またはパスワードが無効です。確認してもう一度お試しください。",
+    "email_exists": "メールアドレスはすでに存在します"
   }
 }

@@ -12,7 +12,8 @@ const loginError = ref({
 })
 const { t } = useI18n()
 const router = useRouter()
-const state = reactive({
+const loading = ref(false)
+const state = ref({
   email: '',
   password: ''
 })
@@ -26,8 +27,7 @@ const validate = (state: any): FormError[] => {
 }
 
 async function onSubmit (event: FormSubmitEvent<any>) {
-  // Do something with data
-  console.log(event.data)
+  loading.value = true
   const res = await login(event.data)
   if (res.status === 'success') {
     console.log(user.value, '-----------')
@@ -35,12 +35,14 @@ async function onSubmit (event: FormSubmitEvent<any>) {
       email: '',
       password: ''
     }
+    loading.value = false
     router.push('/')
   } else {
     loginError.value = {
       title: t('signup.error'),
       message: res.message
     }
+    loading.value = false
   }
 }
 </script>

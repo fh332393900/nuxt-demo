@@ -8,7 +8,6 @@ export default defineEventHandler(async (event: any) => {
 
   // 获取临时数据
   const tempData = await kv.get(`registration:${token}`)
-  console.log(tempData)
   if (!tempData) {
     return {
       status: 'error',
@@ -30,7 +29,6 @@ export default defineEventHandler(async (event: any) => {
   })
 
   await kv.del(`registration:${token}`)
-  console.log(user, '---------')
 
   // eslint-disable-next-line import/no-named-as-default-member
   const userToken = jwt.sign({ id: user.id, email: user.email }, secret, { expiresIn: '1h' })

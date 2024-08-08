@@ -6,6 +6,7 @@ import { sendVerificationEmail } from '@/server/utils/sendEmail'
 
 export default defineEventHandler(async (event: any) => {
   const { email, username, password } = await readBody(event)
+  const t = await useTranslation(event)
 
   const user = await prisma.user.findUnique({
     where: { email }
@@ -13,7 +14,7 @@ export default defineEventHandler(async (event: any) => {
   if (user) {
     return {
       status: 'error',
-      message: 'Already has this email'
+      message: t('server.email_exists')
     }
   }
   const hashedPassword = await bcrypt.hash(password, 10)

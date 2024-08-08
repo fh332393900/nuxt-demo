@@ -40,7 +40,6 @@ export default oauth.githubEventHandler({
   async onSuccess (event, { user }) {
     user.name = user.login
     user.avatar = user.avatar_url
-    console.log(user, '----user')
     await setUserSession(event, { user })
     const appUser = await getUserByEmail(user.email)
     const secret = process.env.NUXT_SESSION_PASSWORD || ''
