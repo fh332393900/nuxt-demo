@@ -71,15 +71,16 @@ async function onSubmit (event: FormSubmitEvent<any>) {
       <UFormGroup :label="$t('login.password')" name="password">
         <UInput v-model="state.password" :placeholder="$t('login.password')" type="password" />
       </UFormGroup>
-      <div v-if="signupSuccess">
+      <Transition>
         <UAlert
+          v-if="signupSuccess"
           :icon="signupResult.icon"
           :color="signupResult.color"
           variant="outline"
           :title="signupResult.title"
           :description="signupResult.message"
         />
-      </div>
+      </Transition>
       <UButton
         block
         size="lg"
@@ -118,3 +119,15 @@ async function onSubmit (event: FormSubmitEvent<any>) {
     </p>
   </div>
 </template>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
