@@ -3,7 +3,11 @@ import type { FormError, FormSubmitEvent } from '#ui/types'
 import useUserAuth from '~/composables/userAuth'
 
 definePageMeta({
-  middleware: 'auth'
+  middleware: 'auth',
+  pageTransition: {
+    name: 'login-error',
+    mode: 'out-in'
+  }
 })
 
 const loginError = ref({
@@ -61,16 +65,25 @@ async function onSubmit (event: FormSubmitEvent<any>) {
         <UInput v-model="state.password" :placeholder="$t('login.password')" type="password" />
       </UFormGroup>
 
-      <UAlert
-        v-if="loginError.title"
-        icon="i-material-symbols:error-circle-rounded-sharp"
-        color="red"
-        variant="outline"
-        :title="loginError.title"
-        :description="loginError.message"
-      />
+      <Transition>
+        <UAlert
+          v-if="loginError.title"
+          icon="i-material-symbols:error-circle-rounded-sharp"
+          color="red"
+          variant="outline"
+          :title="loginError.title"
+          :description="loginError.message"
+        />
+      </Transition>
 
-      <UButton type="submit" size="lg" icon="i-heroicons-envelope" block>
+      <UButton
+        class="login-error"
+        type="submit"
+        size="lg"
+        icon="i-heroicons-envelope"
+        block
+        :loading="loading"
+      >
         {{ $t('login.continue_with', [$t('login.email')]) }}
       </UButton>
     </UForm>
@@ -132,3 +145,15 @@ async function onSubmit (event: FormSubmitEvent<any>) {
     </p>
   </div>
 </template>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
