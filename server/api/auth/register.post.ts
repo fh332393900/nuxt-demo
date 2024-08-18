@@ -3,10 +3,14 @@ import { v4 as uuidv4 } from 'uuid'
 import kv from '@/server/utils/kv'
 import prisma from '@/server/models/client'
 import { sendVerificationEmail } from '@/server/utils/sendEmail'
+import { useMiddleware } from '@/server/utils/middleware'
+import rateLimit from '@/server/middleware/rateLimit'
 
 export default defineEventHandler(async (event: any) => {
   const { email, username, password } = await readBody(event)
   const t = await useTranslation(event)
+
+  await useMiddleware(event, rateLimit)
 
   const user = await prisma.user.findUnique({
     where: { email }
