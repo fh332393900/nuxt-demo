@@ -6,6 +6,7 @@ const sw = process.env.SW === 'true'
 
 export default defineNuxtConfig({
   modules: [
+    // '@nuxtjs/supabase',
     '@nuxtjs/i18n',
     '@nuxt/ui',
     '@nuxtjs/tailwindcss',
@@ -31,6 +32,8 @@ export default defineNuxtConfig({
     kvApi: process.env.KV_REST_API_URL,
     kvToken: process.env.KV_REST_API_TOKEN,
     databaseUrl: process.env.DATABASE_URL,
+    supabaseUrl: process.env.NUXT_SUPABASE_URL,
+    supabaseKey: process.env.NUXT_SUPABASE_KEY,
     oauth: {
       github: {
         clientId: process.env.NUXT_GITHUB_CLIENT_ID,

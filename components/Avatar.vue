@@ -3,15 +3,17 @@ import useUserAuth from '~/composables/userAuth'
 
 // const { loggedIn, clear, user } = useUserSession()
 const { loggedIn, user, clear } = useUserAuth()
-console.log(loggedIn, '000000')
-console.log(user.value, 'vvvvvvvv')
+const router = useRouter()
 const items = [
   [{
     slot: 'account',
     disabled: true
   }], [{
     label: 'action.settings',
-    icon: 'i-heroicons-cog-8-tooth'
+    icon: 'i-heroicons-cog-8-tooth',
+    click: () => {
+      router.push('/setting')
+    }
   }], [{
     label: 'action.sign_out',
     icon: 'i-heroicons-arrow-left-on-rectangle',
