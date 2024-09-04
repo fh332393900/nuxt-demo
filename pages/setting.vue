@@ -2,8 +2,7 @@
 import { createClient } from '@supabase/supabase-js'
 import useUserAuth from '~/composables/userAuth'
 
-const supabase = createClient('https://gmpherjortzssdpmpxkp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtcGhlcmpvcnR6c3NkcG1weGtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQ4MTA3MDcsImV4cCI6MjA0MDM4NjcwN30.BQTPsLAdzaK5nZKaN4BJgMxJ6yUIyh82iIWzyqxU7-0')
-
+let supabase
 const { user } = useUserAuth()
 const toast = useToast()
 const state = reactive({
@@ -12,10 +11,23 @@ const state = reactive({
 })
 const filePath = ref()
 const files = ref({})
+const supabaseKey = ref({})
 const isNoChangeUser = computed(() => {
   return state.name === user.value.username && state.avatar === user.value.avatarUrl
 })
 
+initSupabase()
+
+async function getUploadKey () {
+  const { data } = await $fetch('/api/uploadKey')
+  supabaseKey.value = data
+}
+
+async function initSupabase () {
+  await getUploadKey()
+  const { url, key } = supabaseKey.value
+  supabase = createClient(url, key)
+}
 function cancelChange () {
   state.name = user.value.username
   state.avatar = user.value.avatarUrl
@@ -31,20 +43,37 @@ async function uploadAvatar () {
   } catch (error) {}
 }
 
+function getSupabaseFileName (url) {
+  const isSupabaseImage = url.includes(supabaseKey.value.bucket)
+  const fileNames = url.split('/')
+  const fileName = fileNames[fileNames.length - 1]
+
+  if (!isSupabaseImage) {
+    return ''
+  }
+  return fileName
+}
+
+async function deleteImage (fileName) {
+  await supabase.storage.from('test').remove([`avatar/${fileName}`])
+}
+
 async function onSubmit () {
   const params = {
     username: state.name,
     avatarUrl: state.avatar
   }
+  const deleteImageUrl = getSupabaseFileName(user.value.avatarUrl)
   if (filePath.value) {
     const { fullPath } = await uploadAvatar()
-    params.avatarUrl = `https://gmpherjortzssdpmpxkp.supabase.co/storage/v1/object/public/${fullPath}`
+    params.avatarUrl = `${supabaseKey.value.bucket}${fullPath}`
   }
   await $fetch('/api/user/update', {
     method: 'PUT',
     body: params
   })
   toast.add({ title: 'Update success!' })
+  deleteImageUrl && await deleteImage(deleteImageUrl)
 }
 function changeFile (file, path) {
   const url = URL.createObjectURL(file)
