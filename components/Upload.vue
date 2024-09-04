@@ -1,27 +1,28 @@
 <script setup lang="ts">
 const files = ref()
 const emit = defineEmits(['changeFile'])
+const uploadInputRef = ref()
 
 function uploadAvatar (fileList: FileList) {
-  console.log(fileList)
   files.value = fileList
   const file = files.value[0]
   const fileExt = file.name.split('.').pop()
-  const fileName = `${Math.random()}.${fileExt}`
+  const fileName = `${file.name.split('.')[0]}.${fileExt}`
   const filePath = `/avatar/${fileName}`
   emit('changeFile', file, filePath)
+}
+function open () {
+  uploadInputRef.value.input.click()
 }
 </script>
 
 <template>
   <div>
-    <UButton size="xs" icon="i-heroicons-folder">
-      <label for="uploadInput">
-        Choose
-      </label>
+    <UButton size="xs" icon="i-heroicons-folder" @click="open">
+      Choose
     </UButton>
     <UInput
-      id="uploadInput"
+      ref="uploadInputRef"
       class="hidden"
       type="file"
       size="sm"

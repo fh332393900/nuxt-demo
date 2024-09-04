@@ -1,44 +1,56 @@
 <script setup>
-// import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js'
 import useUserAuth from '~/composables/userAuth'
 
-// const supabase = createClient('https://gmpherjortzssdpmpxkp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtcGhlcmpvcnR6c3NkcG1weGtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQ4MTA3MDcsImV4cCI6MjA0MDM4NjcwN30.BQTPsLAdzaK5nZKaN4BJgMxJ6yUIyh82iIWzyqxU7-0')
+const supabase = createClient('https://gmpherjortzssdpmpxkp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtcGhlcmpvcnR6c3NkcG1weGtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQ4MTA3MDcsImV4cCI6MjA0MDM4NjcwN30.BQTPsLAdzaK5nZKaN4BJgMxJ6yUIyh82iIWzyqxU7-0')
 
 const { user } = useUserAuth()
+const toast = useToast()
 const state = reactive({
   name: user.value.username,
   avatar: user.value.avatarUrl
 })
-// const uploading = ref(false)
-// const src = ref('')
-// const files = ref()
+const filePath = ref()
+const files = ref({})
+const isNoChangeUser = computed(() => {
+  return state.name === user.value.username && state.avatar === user.value.avatarUrl
+})
 
-// const uploadAvatar = async (evt) => {
-//   files.value = evt.target.files
-//   try {
-//     uploading.value = true
+function cancelChange () {
+  state.name = user.value.username
+  state.avatar = user.value.avatarUrl
 
-//     if (!files.value || files.value.length === 0) {
-//       throw new Error('You must select an image to upload.')
-//     }
+  filePath.value = ''
+  files.value = {}
+}
 
-//     const file = files.value[0]
-//     const fileExt = file.name.split('.').pop()
-//     const fileName = `${Math.random()}.${fileExt}`
-//     const filePath = `/avatar/${fileName}`
-//     console.log(file)
-//     const { error: uploadError } = await supabase.storage.from('test').upload(filePath, file)
+async function uploadAvatar () {
+  try {
+    const { data } = await supabase.storage.from('test').upload(filePath.value, files.value)
+    return data
+  } catch (error) {}
+}
 
-//     if (uploadError) { throw uploadError }
-//   } catch (error) {
-//     alert(error.message)
-//   } finally {
-//     uploading.value = false
-//   }
-// }
-
-function onSubmit () {
-
+async function onSubmit () {
+  const params = {
+    username: state.name,
+    avatarUrl: state.avatar
+  }
+  if (filePath.value) {
+    const { fullPath } = await uploadAvatar()
+    params.avatarUrl = `https://gmpherjortzssdpmpxkp.supabase.co/storage/v1/object/public/${fullPath}`
+  }
+  await $fetch('/api/user/update', {
+    method: 'PUT',
+    body: params
+  })
+  toast.add({ title: 'Update success!' })
+}
+function changeFile (file, path) {
+  const url = URL.createObjectURL(file)
+  filePath.value = path
+  state.avatar = url
+  files.value = file
 }
 </script>
 
@@ -75,17 +87,21 @@ function onSubmit () {
                   :src="state.avatar"
                   :alt="state.name"
                 />
-                <!-- <UInput type="file" size="sm" icon="i-heroicons-folder" /> -->
-                <Upload />
+                <Upload @change-file="changeFile" />
               </div>
             </template>
           </UFormGroup>
 
           <div class="mt-4">
-            <UButton type="submit" class="px-5">
+            <UButton type="submit" class="px-5" :disabled="isNoChangeUser">
               Save
             </UButton>
-            <UButton class="ml-4 px-5" variant="outline">
+            <UButton
+              class="ml-4 px-5"
+              variant="outline"
+              :disabled="isNoChangeUser"
+              @click="cancelChange"
+            >
               Cancel
             </UButton>
           </div>
@@ -103,5 +119,6 @@ function onSubmit () {
         Delete Account
       </UButton>
     </UContainer>
+    <UNotifications />
   </div>
 </template>
