@@ -43,7 +43,7 @@ export default oauth.googleEventHandler({
     if (appUser) {
       const token = jwt.sign({ id: appUser.id, email: appUser.email }, secret, { expiresIn: '1h' })
 
-      if (!appUser.githubId) {
+      if (!appUser.googleId) {
         const updateUser = await updateGoogleUser(appUser.id, user)
         setUserCookie(event, token, updateUser)
       } else {
