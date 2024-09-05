@@ -51,6 +51,7 @@ async function uploadAvatar () {
 }
 
 function getSupabaseFileName (url) {
+  if (!url) { return '' }
   const isSupabaseImage = url.includes(supabaseKey.value.bucket)
   const fileNames = url.split('/')
   const fileName = fileNames[fileNames.length - 1]
@@ -80,6 +81,7 @@ async function onSubmit () {
     body: params
   })
   toast.add({ title: 'Update success!' })
+  state.avatar = params.avatarUrl
   deleteImageUrl && await deleteImage(deleteImageUrl)
 }
 function changeFile (file, path) {
