@@ -12,6 +12,7 @@ export default defineEventHandler(async (event: any) => {
   const user = await prisma.user.findUnique({
     where: { email }
   })
+  console.log(user, 'ccccccccccc')
   if (!user) {
     return {
       status: 'error',

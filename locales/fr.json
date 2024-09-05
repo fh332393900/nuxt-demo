@@ -37,6 +37,14 @@
     "error": "Erreur!",
     "signup_success_tips": "Inscription réussie, veuillez vérifier votre e-mail pour vérifier votre compte."
   },
+  "setting": {
+    "avatar": "Avatar",
+    "account": "Compte",
+    "save": "Sauvegarder",
+    "cancel": "Annuler",
+    "delete_account_tips": "Vous ne souhaitez plus utiliser notre service ? Vous pouvez supprimer votre compte ici. Cette action n'est pas réversible. Toutes les informations liées à ce compte seront supprimées définitivement.",
+    "delete_account": "Supprimer le compte"
+  },
   "server": {
     "invalid_username_password": "Nom d'utilisateur ou mot de passe invalide, veuillez vérifier et réessayer",
     "email_exists": "L'adresse e-mail existe déjà"

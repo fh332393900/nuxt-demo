@@ -37,6 +37,14 @@
     "error": "Error!",
     "signup_success_tips": "Sign up successful, please check your email to verify your account."
   },
+  "setting": {
+    "avatar": "Avatar",
+    "account": "Account",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete_account_tips": "No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.",
+    "delete_account": "Delete Account"
+  },
   "server": {
     "invalid_username_password": "Invalid username or password, please check and try again",
     "email_exists": "The email address already exists"

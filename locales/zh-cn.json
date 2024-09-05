@@ -37,6 +37,14 @@
     "error": "错误！",
     "signup_success_tips": "请查看您的电子邮件来验证您的帐户。"
   },
+  "setting": {
+    "avatar": "头像",
+    "account": "账户",
+    "save": "保存",
+    "cancel": "取消",
+    "delete_account_tips": "不想再使用我们的服务？您可以在此处删除您的帐户。此操作不可逆。与此帐户相关的所有信息将被永久删除。",
+    "delete_account": "删除账户"
+  },
   "server": {
     "invalid_username_password": "用户名或密码错误，请检查并重试",
     "email_exists": "该邮箱地址已存在"

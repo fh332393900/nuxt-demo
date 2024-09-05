@@ -2,8 +2,13 @@
 import { createClient } from '@supabase/supabase-js'
 import useUserAuth from '~/composables/userAuth'
 
+definePageMeta({
+  middleware: 'auth'
+})
+
 let supabase
-const { user } = useUserAuth()
+const { user, clear } = useUserAuth()
+const router = useRouter()
 const toast = useToast()
 const state = reactive({
   name: user.value.username,
@@ -12,6 +17,8 @@ const state = reactive({
 const filePath = ref()
 const files = ref({})
 const supabaseKey = ref({})
+const isOpen = ref(false)
+
 const isNoChangeUser = computed(() => {
   return state.name === user.value.username && state.avatar === user.value.avatarUrl
 })
@@ -55,7 +62,7 @@ function getSupabaseFileName (url) {
 }
 
 async function deleteImage (fileName) {
-  await supabase.storage.from('test').remove([`avatar/${fileName}`])
+  await supabase.storage.from('test').remove([`/avatar/${fileName}`])
 }
 
 async function onSubmit () {
@@ -81,19 +88,29 @@ function changeFile (file, path) {
   state.avatar = url
   files.value = file
 }
+
+async function deleteAccount () {
+  await $fetch('/api/user/delete', {
+    method: 'DELETE'
+  })
+  toast.add({ title: 'Delete success!' })
+  clear()
+  isOpen.value = false
+  router.push('/')
+}
 </script>
 
 <template>
   <div>
     <UContainer>
       <div class="pb-2 text-base font-bold border-b border-gray-200 dark:border-gray-600">
-        Settings
+        {{ $t('action.settings') }}
       </div>
       <div>
         <UForm ref="form" :state="state" @submit="onSubmit">
           <UFormGroup class="flex py-4 justify-between border-b border-gray-200 dark:border-gray-600" label="Email" description="We'll only use this for spam." size="sm">
             <template #label>
-              <span>Name</span>
+              <span>{{ $t('signup.username') }}</span>
             </template>
             <template #description>
               <span class="text-sm text-gray-400">Will appear on receipts, invoices, and other communication.</span>
@@ -104,7 +121,7 @@ function changeFile (file, path) {
           </UFormGroup>
           <UFormGroup class="flex py-4 justify-between border-b border-gray-200 dark:border-gray-600" label="Email" description="We'll only use this for spam." size="sm">
             <template #label>
-              <span>Avatar</span>
+              <span>{{ $t('setting.avatar') }}</span>
             </template>
             <template #description>
               <span class="text-sm text-gray-400">Will appear on receipts, invoices, and other communication.</span>
@@ -123,7 +140,7 @@ function changeFile (file, path) {
 
           <div class="mt-4">
             <UButton type="submit" class="px-5" :disabled="isNoChangeUser">
-              Save
+              {{ $t('setting.save') }}
             </UButton>
             <UButton
               class="ml-4 px-5"
@@ -131,23 +148,44 @@ function changeFile (file, path) {
               :disabled="isNoChangeUser"
               @click="cancelChange"
             >
-              Cancel
+              {{ $t('setting.cancel') }}
             </UButton>
           </div>
         </UForm>
       </div>
       <div class="mt-4 py-4 border-t border-b border-gray-200 dark:border-gray-600">
         <p>
-          Account
+          {{ $t('setting.account') }}
         </p>
         <p class="text-sm text-gray-400">
-          No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.
+          {{ $t('setting.delete_account_tips') }}
         </p>
       </div>
-      <UButton type="submit" class="mt-4 px-5" color="red">
-        Delete Account
+      <UButton type="submit" class="mt-4 px-5" color="red" @click="isOpen = true">
+        {{ $t('setting.delete_account') }}
       </UButton>
     </UContainer>
     <UNotifications />
+    <UModal v-model="isOpen">
+      <div class="p-4">
+        <div class="flex">
+          <UIcon name="i-heroicons:exclamation-circle" class="text-red-500 w-10 h-10" />
+          <div class="ml-2">
+            <p class="font-bold">
+              Delete account
+            </p>
+            <p class="text-sm text-gray-400">
+              Are you sure you want to delete your account?
+            </p>
+          </div>
+        </div>
+        <UButton class="mt-4 px-5 ml-12" color="red" @click="deleteAccount">
+          {{ $t('setting.delete_account') }}
+        </UButton>
+        <UButton class="mt-4 px-5 ml-1" variant="outline" @click="isOpen = false">
+          {{ $t('setting.cancel') }}
+        </UButton>
+      </div>
+    </UModal>
   </div>
 </template>

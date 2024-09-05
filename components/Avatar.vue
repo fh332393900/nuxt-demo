@@ -19,6 +19,7 @@ const items = [
     icon: 'i-heroicons-arrow-left-on-rectangle',
     click: () => {
       clear()
+      router.push('/')
     }
   }]
 ]
