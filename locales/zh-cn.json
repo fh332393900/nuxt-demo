@@ -2,51 +2,51 @@
   "action": {
     "exportPNG": "导出 PNG",
     "exportSVG": "导出 SVG",
-    "reload": "重新加载",
-    "close": "关闭",
-    "settings": "设置",
-    "sign_out": "退出登录",
-    "login": "登录"
+    "reload": "Reload",
+    "close": "Close",
+    "settings": "Settings",
+    "sign_out": "Sign out",
+    "login": "Login"
   },
   "appInfo": {
-    "built_at": "构建于 {0}",
-    "login_with": "使用以下方式登录",
-    "signed_in_as": "登录为",
-    "views": "浏览量：",
-    "notification": "通知",
-    "app_ready": "应用已就绪",
-    "app_update_notice": "新内容可用，点击重新加载按钮以更新。"
+    "built_at": "Built {0}",
+    "signed_in_as": "Signed in as",
+    "login_with": "Log in with {0}",
+    "views": "Views: ",
+    "notification": "Notification",
+    "app_ready": "Application is ready",
+    "app_update_notice": "New content available, click the reload button to update."
   },
   "login": {
-    "welcome_back": "欢迎回来!",
-    "email": "邮箱",
-    "password": "密码",
-    "email_address": "邮箱地址",
-    "continue_with": "继续使用{0}",
-    "or": "或者",
-    "no_account": "还没有账户？",
-    "sign_up": "注册",
-    "policy_tips": "继续操作即表示您已阅读并同意{0}和{1}。",
-    "service": "服务条款",
-    "policy": "隐私政策"
+    "welcome_back": "Welcome back!",
+    "email": "Email",
+    "password": "Password",
+    "email_address": "Email Address",
+    "continue_with": "Continue with {0}",
+    "or": "or",
+    "no_account": "Don't have an account?",
+    "sign_up": "Sign Up",
+    "policy_tips": "By continuing, you are indicating that you have read and acknowledge the {0} and {1}.",
+    "service": "Terms of Service",
+    "policy": "Privacy Policy"
   },
   "signup": {
-    "username": "用户名",
-    "back_login": "返回登录",
-    "success": "成功！",
-    "error": "错误！",
-    "signup_success_tips": "请查看您的电子邮件来验证您的帐户。"
+    "username": "Username",
+    "back_login": "Back to Login",
+    "success": "Success!",
+    "error": "Error!",
+    "signup_success_tips": "Sign up successful, please check your email to verify your account."
   },
   "setting": {
-    "avatar": "头像",
-    "account": "账户",
-    "save": "保存",
-    "cancel": "取消",
-    "delete_account_tips": "不想再使用我们的服务？您可以在此处删除您的帐户。此操作不可逆。与此帐户相关的所有信息将被永久删除。",
-    "delete_account": "删除账户"
+    "avatar": "Avatar",
+    "account": "Account",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete_account_tips": "No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.",
+    "delete_account": "Delete Account"
   },
   "server": {
-    "invalid_username_password": "用户名或密码错误，请检查并重试",
-    "email_exists": "该邮箱地址已存在"
+    "invalid_username_password": "Invalid username or password, please check and try again",
+    "email_exists": "The email address already exists"
   }
 }
