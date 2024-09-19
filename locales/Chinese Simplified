@@ -1,7 +1,7 @@
 {
   "action": {
-    "exportPNG": "Export PNG",
-    "exportSVG": "Export SVG",
+    "exportPNG": "导出 PNG",
+    "exportSVG": "导出 SVG",
     "reload": "Reload",
     "close": "Close",
     "settings": "Settings",
