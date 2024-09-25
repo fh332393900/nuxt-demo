@@ -42,8 +42,10 @@
     "account": "계정",
     "save": "구하다",
     "cancel": "취소",
+    "info_tips": "Will be used to display personal information.",
     "delete_account_tips": "더 이상 당사 서비스를 사용하고 싶지 않으신가요? 여기에서 계정을 삭제할 수 있습니다. 이 작업은 되돌릴 수 없습니다. 이 계정과 관련된 모든 정보는 영구적으로 삭제됩니다.",
-    "delete_account": "계정 삭제"
+    "delete_account": "계정 삭제",
+    "sure_delete": "Are you sure you want to delete your account?"
   },
   "server": {
     "invalid_username_password": "잘못된 사용자 이름 또는 비밀번호입니다. 확인하고 다시 시도하세요.",
