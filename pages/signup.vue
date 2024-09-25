@@ -56,67 +56,69 @@ async function onSubmit (event: FormSubmitEvent<any>) {
 
 <template>
   <div class="mx-auto mt-3 max-w-96 flex justify-center flex-col">
-    <div class="text-center font-bold text-lg text-primary">
-      {{ $t('login.sign_up') }}
-    </div>
-    <UForm :validate="validate" :state="state" class="space-y-4" @submit="onSubmit">
-      <UFormGroup :label="$t('login.email')" name="email">
-        <UInput v-model="state.email" :placeholder="$t('login.email_address')" />
-      </UFormGroup>
-
-      <UFormGroup :label="$t('signup.username')" name="username">
-        <UInput v-model="state.username" :placeholder="$t('signup.username')" />
-      </UFormGroup>
-
-      <UFormGroup :label="$t('login.password')" name="password">
-        <UInput v-model="state.password" :placeholder="$t('login.password')" type="password" />
-      </UFormGroup>
-      <Transition>
-        <UAlert
-          v-if="signupSuccess"
-          :icon="signupResult.icon"
-          :color="signupResult.color"
-          variant="outline"
-          :title="signupResult.title"
-          :description="signupResult.message"
-        />
-      </Transition>
-      <UButton
-        block
-        size="lg"
-        icon="i-heroicons-envelope"
-        type="submit"
-        :loading="btnLoading"
-      >
+    <UCard>
+      <div class="text-center font-bold text-lg text-primary">
         {{ $t('login.sign_up') }}
-      </UButton>
-    </UForm>
-    <div class="text-center mt-4">
-      <ULink
-        to="/login"
-        icon="i-material-symbols:keyboard-backspace-rounded"
-        active-class="text-primary"
-        inactive-class="text-primary dark:text-primary-400 hover:underline"
-      >
-        {{ $t('signup.back_login') }}
-      </ULink>
-    </div>
-    <p class="text-xs text-gray-500 dark:text-gray-400 mt-5 text-center">
-      <i18n-t keypath="login.policy_tips">
+      </div>
+      <UForm :validate="validate" :state="state" class="space-y-4" @submit="onSubmit">
+        <UFormGroup :label="$t('login.email')" name="email">
+          <UInput v-model="state.email" :placeholder="$t('login.email_address')" />
+        </UFormGroup>
+
+        <UFormGroup :label="$t('signup.username')" name="username">
+          <UInput v-model="state.username" :placeholder="$t('signup.username')" />
+        </UFormGroup>
+
+        <UFormGroup :label="$t('login.password')" name="password">
+          <UInput v-model="state.password" :placeholder="$t('login.password')" type="password" />
+        </UFormGroup>
+        <Transition>
+          <UAlert
+            v-if="signupSuccess"
+            :icon="signupResult.icon"
+            :color="signupResult.color"
+            variant="outline"
+            :title="signupResult.title"
+            :description="signupResult.message"
+          />
+        </Transition>
+        <UButton
+          block
+          size="lg"
+          icon="i-heroicons-envelope"
+          type="submit"
+          :loading="btnLoading"
+        >
+          {{ $t('login.sign_up') }}
+        </UButton>
+      </UForm>
+      <div class="text-center mt-4">
         <ULink
+          to="/login"
+          icon="i-material-symbols:keyboard-backspace-rounded"
           active-class="text-primary"
           inactive-class="text-primary dark:text-primary-400 hover:underline"
         >
-          {{ $t('login.service') }}
+          {{ $t('signup.back_login') }}
         </ULink>
-        <ULink
-          active-class="text-primary"
-          inactive-class="text-primary dark:text-primary-400 hover:underline"
-        >
-          {{ $t('login.policy') }}
-        </ULink>
-      </i18n-t>
-    </p>
+      </div>
+      <p class="text-xs text-gray-500 dark:text-gray-400 mt-5 text-center">
+        <i18n-t keypath="login.policy_tips">
+          <ULink
+            active-class="text-primary"
+            inactive-class="text-primary dark:text-primary-400 hover:underline"
+          >
+            {{ $t('login.service') }}
+          </ULink>
+          <ULink
+            active-class="text-primary"
+            inactive-class="text-primary dark:text-primary-400 hover:underline"
+          >
+            {{ $t('login.policy') }}
+          </ULink>
+        </i18n-t>
+      </p>
+    </UCard>
   </div>
 </template>
 
