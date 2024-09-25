@@ -42,8 +42,10 @@
     "account": "Account",
     "save": "Save",
     "cancel": "Cancel",
+    "info_tips": "Will be used to display personal information.",
     "delete_account_tips": "No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.",
-    "delete_account": "Delete Account"
+    "delete_account": "Delete Account",
+    "sure_delete": "Are you sure you want to delete your account?"
   },
   "server": {
     "invalid_username_password": "Invalid username or password, please check and try again",
