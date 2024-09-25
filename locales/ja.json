@@ -42,8 +42,10 @@
     "account": "アカウント",
     "save": "保存",
     "cancel": "キャンセル",
+    "info_tips": "Will be used to display personal information.",
     "delete_account_tips": "当社のサービスを今後ご利用になりたくない場合は、こちらからアカウントを削除できます。この操作は元に戻せません。このアカウントに関連するすべての情報は永久に削除されます。",
-    "delete_account": "アカウントを削除"
+    "delete_account": "アカウントを削除",
+    "sure_delete": "Are you sure you want to delete your account?"
   },
   "server": {
     "invalid_username_password": "ユーザー名またはパスワードが無効です。確認してもう一度お試しください。",
