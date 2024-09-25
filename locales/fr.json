@@ -42,8 +42,10 @@
     "account": "Compte",
     "save": "Sauvegarder",
     "cancel": "Annuler",
+    "info_tips": "Sera utilisé pour l’affichage des informations personnelles.",
     "delete_account_tips": "Vous ne souhaitez plus utiliser notre service ? Vous pouvez supprimer votre compte ici. Cette action n'est pas réversible. Toutes les informations liées à ce compte seront supprimées définitivement.",
-    "delete_account": "Supprimer le compte"
+    "delete_account": "Supprimer le compte",
+    "sure_delete": "Etes-vous sûr de vouloir supprimer votre compte ?"
   },
   "server": {
     "invalid_username_password": "Nom d'utilisateur ou mot de passe invalide, veuillez vérifier et réessayer",

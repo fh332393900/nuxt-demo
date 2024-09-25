@@ -19,12 +19,14 @@ const props = withDefaults(defineProps<PropsTypes>(), {
       cursor-pointer
       transition-all
       bg-primary-50
-      hover:bg-primary-200
+      hover:bg-primary-300
       dark:bg-gray-400
       dark:hover:bg-gray-100
       rounded-md
     "
-    :class="{'border-2 border-solid border-primary-300 bg-primary-200 dark:bg-gray-100': props.active}"
+    :class="{
+      'border-2 border-solid border-primary-400 bg-primary-300 dark:bg-gray-100': props.active
+    }"
   >
     <slot />
   </div>

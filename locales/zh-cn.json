@@ -42,8 +42,10 @@
     "account": "账户",
     "save": "保存",
     "cancel": "取消",
+    "info_tips": "将用于个人信息展示。",
     "delete_account_tips": "不想再使用我们的服务？您可以在此处删除您的帐户。此操作不可逆。与此帐户相关的所有信息将被永久删除。",
-    "delete_account": "删除账户"
+    "delete_account": "删除账户",
+    "sure_delete": "您确定要删除您的帐户吗？"
   },
   "server": {
     "invalid_username_password": "用户名或密码错误，请检查并重试",

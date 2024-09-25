@@ -18,12 +18,15 @@ const filePath = ref()
 const files = ref({})
 const supabaseKey = ref({})
 const isOpen = ref(false)
+const saveLoading = ref(false)
 
 const isNoChangeUser = computed(() => {
   return state.name === user.value.username && state.avatar === user.value.avatarUrl
 })
 
-initSupabase()
+onMounted(() => {
+  initSupabase()
+})
 
 async function getUploadKey () {
   const { data } = await $fetch('/api/uploadKey')
@@ -35,6 +38,7 @@ async function initSupabase () {
   const { url, key } = supabaseKey.value
   supabase = createClient(url, key)
 }
+
 function cancelChange () {
   state.name = user.value.username
   state.avatar = user.value.avatarUrl
@@ -76,14 +80,17 @@ async function onSubmit () {
     const { fullPath } = await uploadAvatar()
     params.avatarUrl = `${supabaseKey.value.bucket}${fullPath}`
   }
+  saveLoading.value = true
   await $fetch('/api/user/update', {
     method: 'PUT',
     body: params
   })
+  saveLoading.value = false
   toast.add({ title: 'Update success!' })
   state.avatar = params.avatarUrl
   deleteImageUrl && await deleteImage(deleteImageUrl)
 }
+
 function changeFile (file, path) {
   const url = URL.createObjectURL(file)
   filePath.value = path
@@ -103,8 +110,8 @@ async function deleteAccount () {
 </script>
 
 <template>
-  <div>
-    <UContainer>
+  <div class="mx-auto px-8 sm:px-12 lg:px-16 max-w-7xl">
+    <UCard>
       <div class="pb-2 text-base font-bold border-b border-gray-200 dark:border-gray-600">
         {{ $t('action.settings') }}
       </div>
@@ -115,7 +122,9 @@ async function deleteAccount () {
               <span>{{ $t('signup.username') }}</span>
             </template>
             <template #description>
-              <span class="text-sm text-gray-400">Will appear on receipts, invoices, and other communication.</span>
+              <span class="text-sm text-gray-400">
+                {{ $t('setting.info_tips') }}
+              </span>
             </template>
             <template #default>
               <UInput v-model="state.name" placeholder="Your name" />
@@ -126,7 +135,9 @@ async function deleteAccount () {
               <span>{{ $t('setting.avatar') }}</span>
             </template>
             <template #description>
-              <span class="text-sm text-gray-400">Will appear on receipts, invoices, and other communication.</span>
+              <span class="text-sm text-gray-400">
+                {{ $t('setting.info_tips') }}
+              </span>
             </template>
             <template #default>
               <div class="flex">
@@ -141,7 +152,7 @@ async function deleteAccount () {
           </UFormGroup>
 
           <div class="mt-4">
-            <UButton type="submit" class="px-5" :disabled="isNoChangeUser">
+            <UButton type="submit" class="px-5" :disabled="isNoChangeUser" :loading="saveLoading">
               {{ $t('setting.save') }}
             </UButton>
             <UButton
@@ -166,28 +177,28 @@ async function deleteAccount () {
       <UButton type="submit" class="mt-4 px-5" color="red" @click="isOpen = true">
         {{ $t('setting.delete_account') }}
       </UButton>
-    </UContainer>
-    <UNotifications />
-    <UModal v-model="isOpen">
-      <div class="p-4">
-        <div class="flex">
-          <UIcon name="i-heroicons:exclamation-circle" class="text-red-500 w-10 h-10" />
-          <div class="ml-2">
-            <p class="font-bold">
-              Delete account
-            </p>
-            <p class="text-sm text-gray-400">
-              Are you sure you want to delete your account?
-            </p>
+      <UNotifications />
+      <UModal v-model="isOpen">
+        <div class="p-4">
+          <div class="flex">
+            <UIcon name="i-heroicons:exclamation-circle" class="text-red-500 w-10 h-10" />
+            <div class="ml-2">
+              <p class="font-bold">
+                {{ $t('setting.delete_account') }}
+              </p>
+              <p class="text-sm text-gray-400">
+                {{ $t('setting.sure_delete') }}
+              </p>
+            </div>
           </div>
+          <UButton class="mt-4 px-5 ml-12" color="red" @click="deleteAccount">
+            {{ $t('setting.delete_account') }}
+          </UButton>
+          <UButton class="mt-4 px-5 ml-1" variant="outline" @click="isOpen = false">
+            {{ $t('setting.cancel') }}
+          </UButton>
         </div>
-        <UButton class="mt-4 px-5 ml-12" color="red" @click="deleteAccount">
-          {{ $t('setting.delete_account') }}
-        </UButton>
-        <UButton class="mt-4 px-5 ml-1" variant="outline" @click="isOpen = false">
-          {{ $t('setting.cancel') }}
-        </UButton>
-      </div>
-    </UModal>
+      </UModal>
+    </UCard>
   </div>
 </template>
