@@ -1,5 +1,5 @@
 <template>
-  <UCard class="content mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+  <UCard class="content px-4 sm:px-6 lg:px-8">
     <ClientOnly>
       <EmojiMaker />
     </ClientOnly>
@@ -11,6 +11,5 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 40px 6rem;
 }
 </style>

@@ -7,7 +7,7 @@ const canvasSize = 640
 
 export function useEmojiMaker (
   canvasRef: Ref<HTMLCanvasElement | null>,
-  _data?: any[]
+  _data?: Record<EmojiSlice, number>
 ) {
   const tab = ref<EmojiSlice>('head')
   const images = reactive<Record<EmojiSlice, string[]>>({

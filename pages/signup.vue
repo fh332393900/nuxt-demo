@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
 
+definePageMeta({
+  layout: 'custom'
+})
+
 const { t } = useI18n()
 const state = reactive({
   email: '',

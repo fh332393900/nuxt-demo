@@ -20,7 +20,20 @@ const selectTab = (activeTab: EmojiSlice) => {
 }
 const selectOption = (index: number) => {
   selectedIndex[tab.value] = index
+  console.log(selectedIndex, 'mmm')
   draw()
+}
+
+async function save () {
+  const params = {
+    data: selectedIndex
+  }
+  console.log(params)
+  const { data } = await $fetch('/api/emoji/create', {
+    method: 'POST',
+    body: params
+  })
+  console.log(data)
 }
 </script>
 
@@ -45,6 +58,9 @@ const selectOption = (index: number) => {
         :label="$t('action.exportSVG')"
         @click="toSVGBlob().then(exportImage)"
       />
+      <UButton @click="save">
+        save
+      </UButton>
     </div>
     <div class="tabs flex justify-center items-center">
       <SelectButton

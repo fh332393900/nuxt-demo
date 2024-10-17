@@ -4,6 +4,7 @@ import useUserAuth from '~/composables/userAuth'
 
 definePageMeta({
   middleware: 'auth',
+  layout: 'custom',
   pageTransition: {
     name: 'login-error',
     mode: 'out-in'
